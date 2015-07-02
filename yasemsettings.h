@@ -1,8 +1,6 @@
 #ifndef CONFIGITEM
 #define CONFIGITEM
 
-#include "macros.h"
-
 #include <QString>
 #include <QVariant>
 #include <QList>

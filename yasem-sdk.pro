@@ -34,7 +34,8 @@ HEADERS += \
     sambanode.h \
     plugindependency.h \
     profile_config_parser.h \
-    webobjectinfo.h
+    webobjectinfo.h \
+    stbsubmodel.h
 
 # Plugin headers
 
@@ -43,6 +44,7 @@ SOURCES += \
     stbpluginobject.cpp \
     webserverplugin.cpp \
     mediaplayerpluginobject.cpp \
+    stbprofile.cpp
 
 HEADERS += \
     abstractpluginobject.h \
@@ -55,8 +57,17 @@ HEADERS += \
     abstracthttpproxy_p.h \
     webserverplugin.h \
     webserverplugin_p.h \
+    stbpluginobject.h \
     stbpluginobject_p.h \
     mediaplayerpluginobject.h \
     browserpluginobject.h \
     diskinfo.h \
-    customkeyevent.h
+    customkeyevent.h \
+    stbprofile.h
+
+OTHER_FILES += \
+    LICENSE \
+    README.md \
+
+DISTFILES += \
+    LICENSE

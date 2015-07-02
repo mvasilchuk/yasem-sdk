@@ -1,7 +1,6 @@
 #ifndef DATASOURCE_H
 #define DATASOURCE_H
 
-#include "abstractpluginobject.h"
 #include "datasourceplugin.h"
 
 #include <QString>

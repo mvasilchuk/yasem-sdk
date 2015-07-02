@@ -1,8 +1,6 @@
 #ifndef SAMBA_H
 #define SAMBA_H
 
-#include "sambanode.h"
-
 #include <QDebug>
 #include <QObject>
 #include <QString>
@@ -11,6 +9,9 @@
 
 namespace yasem
 {
+
+class SambaNode;
+
 enum FileType {
     File,
     Dir

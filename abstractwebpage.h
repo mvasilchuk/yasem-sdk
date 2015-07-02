@@ -7,6 +7,8 @@
 #include <QUrl>
 #include <QColor>
 
+class QWidget;
+
 namespace yasem
 {
 

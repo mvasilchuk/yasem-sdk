@@ -1,7 +1,6 @@
 #ifndef GUIPLUGIN_H
 #define GUIPLUGIN_H
 
-#include "enums.h"
 #include "abstractpluginobject.h"
 
 #include <QtPlugin>

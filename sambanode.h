@@ -5,7 +5,6 @@
 #include <QList>
 #include <QString>
 
-
 namespace yasem {
 
 enum SambaNodeType {

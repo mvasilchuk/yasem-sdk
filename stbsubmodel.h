@@ -3,7 +3,6 @@
 
 #include <QString>
 
-
 namespace yasem {
 class StbSubmodel
 {

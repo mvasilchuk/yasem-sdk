@@ -1,12 +1,10 @@
 #ifndef STBPLUGIN_H
 #define STBPLUGIN_H
 
-#include "stbsubmodule.h"
+#include "enums.h"
+#include "stbsubmodel.h"
 #include "webobjectinfo.h"
-#include "macros.h"
-#include "datasourcepluginobject.h"
 #include "abstractpluginobject.h"
-#include <QtPlugin>
 #include <QUrl>
 #include <QHash>
 #include <QDebug>

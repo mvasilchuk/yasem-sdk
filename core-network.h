@@ -1,16 +1,13 @@
 #ifndef CORENETWORK_H
 #define CORENETWORK_H
 
-#include "samba.h"
-
 #include <QtNetwork/QNetworkInterface>
 #include <QList>
 
 namespace yasem
 {
-
+class Samba;
 class CoreNetwork {
-
 public:
     virtual ~CoreNetwork() {}
     virtual bool isConnected() = 0;

@@ -2,15 +2,12 @@
 #define WEBSERVERPLUGIN
 
 #include "abstractpluginobject.h"
-#include "enums.h"
-#include "plugin.h"
-#include <QtPlugin>
 #include <QHash>
 
 class QString;
 
 namespace yasem {
-
+class Plugin;
 class WebServerPluginPrivate;
 
 class WebServerPlugin: public AbstractPluginObject

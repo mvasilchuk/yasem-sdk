@@ -1,9 +1,11 @@
 #ifndef ABSTRACTHTTPPROXYPRIVATE_H
 #define ABSTRACTHTTPPROXYPRIVATE_H
 
-#include "abstracthttpproxy.h"
+#include <QString>
 
 namespace yasem {
+
+class AbstractHttpProxy;
 
 class AbstractHttpProxyPrivate
 {

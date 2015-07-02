@@ -2,7 +2,6 @@
 #define CORE_H
 
 #include "enums.h"
-#include "core-network.h"
 #include "diskinfo.h"
 
 #include <functional>
@@ -32,6 +31,8 @@ namespace yasem
 class StorageInfo;
 class YasemSettings;
 class Statistics;
+class BlockDeviceInfo;
+class CoreNetwork;
 
 class Core: public QObject
 {

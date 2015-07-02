@@ -1,11 +1,11 @@
 #ifndef WEBSERVERPLUGIN_P
 #define WEBSERVERPLUGIN_P
 
-#include "webserverplugin.h"
-#include "plugin_p.h"
+#include <QString>
 
 namespace yasem {
 
+class WebServerPlugin;
 class WebServerPluginPrivate
 {
 public:

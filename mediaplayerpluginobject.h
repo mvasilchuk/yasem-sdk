@@ -5,9 +5,6 @@
 #include "abstractpluginobject.h"
 #include "macros.h"
 #include "mediainfo.h"
-#include "browserpluginobject.h"
-#include "pluginmanager.h"
-#include "abstractwebpage.h"
 
 #include <QWidget>
 #include <QtPlugin>

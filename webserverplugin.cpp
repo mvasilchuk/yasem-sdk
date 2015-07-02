@@ -1,6 +1,7 @@
 
 #include "webserverplugin_p.h"
 #include "plugin_p.h"
+#include "webserverplugin.h"
 
 using namespace yasem;
 

@@ -2,9 +2,8 @@
 #define STBPLUGIN_P_H
 
 #include "enums.h"
-#include "stbsubmodule.h"
+#include "stbsubmodel.h"
 #include "webobjectinfo.h"
-#include "plugin_p.h"
 
 #include <QString>
 #include <QList>

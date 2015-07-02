@@ -1,4 +1,6 @@
 #include "mediaplayerpluginobject.h"
+#include "browserpluginobject.h"
+#include "abstractwebpage.h"
 
 using namespace yasem;
 
