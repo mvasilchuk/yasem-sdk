@@ -7,8 +7,8 @@
 #include <QList>
 #include <QStringList>
 
-namespace yasem
-{
+namespace yasem {
+namespace SDK {
 
 class SambaNode;
 
@@ -29,6 +29,9 @@ public:
     virtual bool mount(const QString &what, const QString &where, const QString &params) = 0;
     virtual bool unmount(const QString &path) = 0;
 };
+
+}
+
 }
 
 #endif // SAMBA_H

@@ -1,7 +1,7 @@
 #include "sambanode.h"
 #include "macros.h"
 
-using namespace yasem;
+using namespace yasem::SDK;
 
 SambaNode::SambaNode(QObject *parent) :
     QObject(parent)
@@ -29,7 +29,7 @@ void SambaNode::print()
 }
 
 
-yasem::SambaNode::~SambaNode()
+SambaNode::~SambaNode()
 {
     DEBUG() << "SambaNode" << name << "deleted";
 }

@@ -11,6 +11,7 @@
 #include <QUrl>
 
 namespace yasem {
+namespace SDK {
 
 class StbPluginObject;
 class DatasourcePluginObject;
@@ -39,6 +40,8 @@ public:
     QString submodelDatasourceGroup;
     QString submodelDatasourceField;
 };
+
+}
 
 }
 

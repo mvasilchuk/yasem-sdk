@@ -5,7 +5,7 @@
 
 #include <QMetaClassInfo>
 
-using namespace yasem;
+using namespace yasem::SDK;
 
 Plugin::Plugin(QObject* parent):
     QObject(parent),

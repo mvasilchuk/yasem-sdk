@@ -5,6 +5,7 @@
 #include <QHash>
 
 namespace yasem {
+namespace SDK {
 
 class NetworkStatistics: public QObject
 {
@@ -35,6 +36,8 @@ signals:
     void pendingCountDecreased();
     void tooSlowCountIncreased();
 };
+
+}
 
 }
 

@@ -9,8 +9,8 @@
 
 class QWidget;
 
-namespace yasem
-{
+namespace yasem {
+namespace SDK {
 
 class AbstractWebPage {
 public slots:
@@ -36,6 +36,7 @@ public slots:
     virtual void execKeyEvent(const QString &action, int code, Qt::KeyboardModifiers mods, const QString &symbol) = 0;
     virtual QWidget* widget() = 0;
 };
+}
 
 }
 

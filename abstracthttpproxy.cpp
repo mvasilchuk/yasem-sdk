@@ -1,7 +1,7 @@
 #include "abstracthttpproxy.h"
 #include "abstracthttpproxy_p.h"
 
-using namespace yasem;
+using namespace yasem::SDK;
 
 AbstractHttpProxy::AbstractHttpProxy(Plugin* plugin):
     AbstractPluginObject(plugin),

@@ -15,6 +15,8 @@ class QCoreApplication;
 class QMetaType;
 
 namespace yasem {
+namespace SDK {
+
 class PluginPrivate;
 class AbstractPluginObject;
 
@@ -150,11 +152,12 @@ protected:
     PluginPrivate *d_ptr;    
 };
 }
+}
 
-#define Plugin_iid "com.mvas.yasem.Plugin/1.0"
+#define Plugin_iid "com.mvas.yasem.sdk.Plugin/1.0"
 
 QT_BEGIN_NAMESPACE
-Q_DECLARE_INTERFACE(yasem::Plugin, Plugin_iid)
+Q_DECLARE_INTERFACE(yasem::SDK::Plugin, Plugin_iid)
 QT_END_NAMESPACE
 
 #endif // IPLUGIN_H

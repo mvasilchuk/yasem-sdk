@@ -3,7 +3,7 @@
 #include "plugin_p.h"
 #include "webserverplugin.h"
 
-using namespace yasem;
+using namespace yasem::SDK;
 
 
 WebServerPlugin::WebServerPlugin(Plugin* plugin):

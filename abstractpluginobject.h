@@ -4,6 +4,7 @@
 #include <QObject>
 
 namespace yasem {
+namespace SDK {
 
 class Plugin;
 
@@ -45,7 +46,7 @@ protected:
     Plugin* m_plugin;
     bool m_is_initialized;
 };
-
+}
 }
 
 #endif // ABSTRACTPLUGINOBJECT

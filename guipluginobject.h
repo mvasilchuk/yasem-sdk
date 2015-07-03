@@ -8,8 +8,8 @@
 class QRect;
 class QMenu;
 
-namespace yasem
-{
+namespace yasem {
+namespace SDK {
 
 class GuiPluginObject: public AbstractPluginObject
 {
@@ -30,6 +30,8 @@ public:
     virtual QRect widgetRect() = 0;
 
 };
+
+}
 
 }
 

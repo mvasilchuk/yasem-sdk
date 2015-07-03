@@ -4,6 +4,7 @@
 #include <QString>
 
 namespace yasem {
+namespace  SDK {
 
 static const QString DB_TAG_PROFILE = "profile";
 
@@ -203,6 +204,9 @@ enum MediaStatus
     EndOfMedia,
     InvalidMedia // what if loop > 0 or stopPosition() is not mediaStopPosition()?
 };
+
+}
+
 }
 
 #endif // ENUM_H

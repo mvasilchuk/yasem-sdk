@@ -14,8 +14,8 @@ class QResizeEvent;
 class QWidget;
 class QEvent;
 
-namespace yasem
-{
+namespace yasem {
+namespace SDK {
 class StbPluginObject;
 class CustomKeyEvent;
 class AbstractWebPage;
@@ -87,6 +87,7 @@ Q_SIGNALS:
     void topWidgetChanged();
 
 };
+}
 }
 
 #endif // BROWSERPLUGIN_H

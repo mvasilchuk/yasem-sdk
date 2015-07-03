@@ -3,7 +3,7 @@
 #include "stbpluginobject_p.h"
 #include "profilemanager.h"
 
-using namespace yasem;
+using namespace yasem::SDK;
 
 StbPluginObject::StbPluginObject(Plugin* plugin):
     AbstractPluginObject(plugin),

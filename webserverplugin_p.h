@@ -4,6 +4,7 @@
 #include <QString>
 
 namespace yasem {
+namespace SDK {
 
 class WebServerPlugin;
 class WebServerPluginPrivate
@@ -21,6 +22,8 @@ protected:
 public:
     QString m_rootDirectory;
 };
+
+}
 
 }
 

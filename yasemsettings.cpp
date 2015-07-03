@@ -1,7 +1,7 @@
 #include "yasemsettings.h"
 #include "macros.h"
 
-using namespace yasem;
+using namespace yasem::SDK;
 
 ConfigTreeGroup::ConfigTreeGroup(const QString &config_file, const QString &id, const QString &title):
     ConfigContainer(config_file, id, title, CONFIG_GROUP)

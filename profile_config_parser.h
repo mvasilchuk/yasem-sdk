@@ -6,8 +6,8 @@
 #include <QVariant>
 #include <QHash>
 
-namespace yasem
-{
+namespace yasem {
+namespace SDK {
 
 class ConfigOption {
 public:
@@ -64,6 +64,9 @@ class ProfileConfigParser {
 public:
     virtual ProfileConfiguration parseOptions(ProfileConfiguration &config, const QByteArray &data) = 0;
 };
+
+}
+
 }
 
 #endif // PROFILE_CONFIG_PARSER_H

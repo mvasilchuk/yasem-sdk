@@ -13,6 +13,7 @@
 #include <QStack>
 
 namespace yasem {
+namespace SDK {
 
 class StbPluginObject;
 class Profile;
@@ -78,6 +79,7 @@ private:
 
 };
 
+}
 
 }
 

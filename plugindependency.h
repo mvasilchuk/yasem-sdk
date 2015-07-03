@@ -5,8 +5,8 @@
 
 #include <QObject>
 
-namespace yasem
-{
+namespace yasem {
+namespace SDK {
 
 class PluginDependency {
 public:
@@ -59,6 +59,8 @@ protected:
         this->m_skip_if_failed = skip_if_failed;
     }
 };
+
+}
 
 }
 

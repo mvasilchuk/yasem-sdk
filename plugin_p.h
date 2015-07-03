@@ -5,6 +5,7 @@
 #include "plugin.h"
 
 namespace yasem {
+namespace SDK {
 
 class Plugin;
 class AbstractPluginObject;
@@ -56,6 +57,8 @@ protected:
 
     }
 };
+
+}
 
 }
 

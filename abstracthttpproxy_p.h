@@ -4,6 +4,7 @@
 #include <QString>
 
 namespace yasem {
+namespace SDK {
 
 class AbstractHttpProxy;
 
@@ -27,7 +28,7 @@ protected:
 
     friend class AbstractHttpProxy;
 };
-
+}
 }
 
 #endif // ABSTRACTHTTPPROXYPRIVATE_H

@@ -6,6 +6,7 @@
 #include <QString>
 
 namespace yasem {
+namespace SDK {
 
 enum SambaNodeType {
     SAMBA_UNDEFINED,
@@ -31,6 +32,8 @@ public:
 
     void print();
 };
+
+}
 
 }
 

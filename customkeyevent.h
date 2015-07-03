@@ -3,8 +3,8 @@
 
 #include <QString>
 
-namespace yasem
-{
+namespace yasem {
+namespace SDK {
 
 class CustomKeyEvent
 {
@@ -39,6 +39,9 @@ protected:
     virtual void init(int keyCode, int which, int keyCode2, int which2, bool alt = false, bool ctrl = false, bool shift = false) = 0;
 
 };
+
+}
+
 }
 
 #endif // CUSTOMKEYEVENT_H

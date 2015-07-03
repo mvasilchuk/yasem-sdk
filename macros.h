@@ -33,8 +33,9 @@ namespace yasem
 template <typename T, typename R>
 T __get_plugin(R role)
 {
-    return dynamic_cast<T>(PluginManager::instance()->getByRole(role));
+    return dynamic_cast<T>(SDK::PluginManager::instance()->getByRole(role));
 }
+
 
 #define S1(x) #x
 #define S2(x) S1(x)

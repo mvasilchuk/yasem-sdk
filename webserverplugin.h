@@ -7,6 +7,8 @@
 class QString;
 
 namespace yasem {
+namespace SDK {
+
 class Plugin;
 class WebServerPluginPrivate;
 
@@ -25,6 +27,8 @@ protected:
     // allow subclasses to initialize with their own concrete Private
     WebServerPluginPrivate *d_ptr;
 };
+
+}
 
 }
 #endif // WEBSERVERPLUGIN

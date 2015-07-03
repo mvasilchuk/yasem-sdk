@@ -16,8 +16,8 @@ static const QString CONFIG_LIMIT_MAX_REQUESTS = "limit_max_requests";
 static const QString CONFIG_PORTAL_SIZE = "portal_size";
 static const QString CONFIG_PORTAL_URL = "portal";
 
-namespace yasem
-{
+namespace yasem {
+namespace SDK {
 
 class DatasourcePluginObject;
 class StbPluginObject;
@@ -101,6 +101,8 @@ friend class StbPluginObject;
 friend class ProfileManager;
 
 };
+
+}
 
 }
 

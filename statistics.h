@@ -4,8 +4,8 @@
 #include <QObject>
 #include <QList>
 
-namespace yasem
-{
+namespace yasem {
+namespace SDK {
 
 class NetworkStatistics;
 
@@ -20,6 +20,8 @@ public:
     virtual NetworkStatistics* network() = 0;
 
 };
+
+}
 
 }
 

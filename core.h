@@ -26,8 +26,8 @@
 
 #define CALLSTACK_SIZE 2048
 
-namespace yasem
-{
+namespace yasem {
+namespace SDK {
 class StorageInfo;
 class YasemSettings;
 class Statistics;
@@ -122,6 +122,7 @@ public slots:
     virtual void mountPointChanged() = 0;
 };
 
+}
 
 }
 

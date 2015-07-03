@@ -4,8 +4,8 @@
 #include <QtNetwork/QNetworkInterface>
 #include <QList>
 
-namespace yasem
-{
+namespace yasem {
+namespace SDK {
 class Samba;
 class CoreNetwork {
 public:
@@ -21,6 +21,8 @@ public:
 protected:
     Samba* samba_impl;
 };
+
+}
 
 }
 

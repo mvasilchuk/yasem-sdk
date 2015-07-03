@@ -10,6 +10,8 @@
 class QString;
 
 namespace yasem {
+namespace SDK {
+
 class Profile;
 class DatasourcePluginObject;
 
@@ -30,6 +32,8 @@ public:
 protected:
     QHash<Profile*, DatasourcePluginObject*> datasources;
 };
+
+}
 
 }
 #endif // DATASOURCEPLUGIN_H

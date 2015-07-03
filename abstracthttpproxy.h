@@ -4,6 +4,7 @@
 #include "abstractpluginobject.h"
 
 namespace yasem {
+namespace SDK {
 
 class AbstractHttpProxyPrivate;
 
@@ -36,6 +37,8 @@ protected:
     // allow subclasses to initialize with their own concrete Private
     AbstractHttpProxyPrivate *d_ptr;
 };
+
+}
 
 }
 

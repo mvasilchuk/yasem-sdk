@@ -1,6 +1,8 @@
 #ifndef CONFIGITEM
 #define CONFIGITEM
 
+#include "core.h"
+
 #include <QString>
 #include <QVariant>
 #include <QList>
@@ -8,11 +10,13 @@
 
 namespace yasem {
 
+class YasemSettingsImpl;
+class CoreImpl;
+
+namespace SDK {
+
 class ConfigTreeGroup;
 class YasemSettings;
-class YasemSettingsImpl;
-class Core;
-class CoreImpl;
 
 class ConfigItem: public QObject
 {
@@ -61,10 +65,10 @@ protected:
     QVariant m_default_value;
     ItemType m_type;
     bool m_is_dirty;
-    QList<ConfigItem*> m_items;
+    QList<SDK::ConfigItem*> m_items;
 
 friend class YasemSettings;
-friend class YasemSettingsImpl;
+friend class yasem::YasemSettingsImpl;
 };
 
 class ListConfigItem: public ConfigItem
@@ -103,7 +107,7 @@ protected:
     bool m_is_built_in;
 
     friend class YasemSettings;
-    friend class YasemSettingsImpl;
+    friend class yasem::YasemSettingsImpl;
 };
 
 class ConfigTreeGroup: public ConfigContainer {
@@ -147,8 +151,16 @@ protected:
     virtual bool addBuiltInConfigGroup(ConfigTreeGroup* group) = 0;
 
     friend class Core;
-    friend class CoreImpl;
+    friend class yasem::CoreImpl;
 };
+
+template <typename T, typename N>
+T __get_config_item(N name)
+{
+    return dynamic_cast<T>(Core::instance()->yasem_settings()->findItem(name));
+}
+
+}
 
 }
 

@@ -4,8 +4,9 @@
 #include <QString>
 
 namespace yasem {
-class StbSubmodel
-{
+namespace SDK {
+
+class StbSubmodel {
 public:
     StbSubmodel() {}
 
@@ -37,6 +38,9 @@ protected:
     QString m_name;
     QString m_logo;
 };
+
+}
+
 }
 
 #endif // STBSUBMODULE_H

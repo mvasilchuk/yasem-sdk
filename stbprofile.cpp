@@ -3,7 +3,7 @@
 #include "macros.h"
 #include "stbpluginobject.h"
 
-using namespace yasem;
+using namespace yasem::SDK;
 
 
 Profile::Profile(StbPluginObject *profilePlugin, const QString &id):

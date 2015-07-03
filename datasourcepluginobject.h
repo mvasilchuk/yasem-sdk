@@ -6,8 +6,8 @@
 #include <QString>
 #include <QVariant>
 
-namespace yasem
-{
+namespace yasem {
+namespace SDK {
 class Plugin;
 
 class DatasourcePluginObject: public DatasourcePlugin
@@ -25,6 +25,8 @@ public:
     virtual bool set(const QString &tag, const QString &name, const QString &value)  = 0;
     virtual QString get(const QString &tag, const QString &name, const QString &defaultValue = "")  = 0;
 };
+
+}
 
 }
 

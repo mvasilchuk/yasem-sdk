@@ -12,6 +12,7 @@
 #include <QHash>
 
 namespace yasem {
+namespace SDK {
 
 class Plugin;
 class AbstractPluginObject;
@@ -92,6 +93,8 @@ private:
     PluginManager(PluginManager const&);              // Don't Implement
     void operator=(PluginManager const&); // Don't implement
 };
+
+}
 
 }
 

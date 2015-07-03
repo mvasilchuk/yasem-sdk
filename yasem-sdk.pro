@@ -15,7 +15,8 @@ DEPENDPATH += ./
 SOURCES += \
     plugin.cpp \
     yasemsettings.cpp \
-    sambanode.cpp
+    sambanode.cpp \
+    diskinfo.cpp
 
 HEADERS += \
     plugin.h \

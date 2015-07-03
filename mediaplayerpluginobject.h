@@ -14,6 +14,7 @@
 #include <QPainter>
 
 namespace yasem {
+namespace SDK {
 
 class MediaPlayerPluginObject: public AbstractPluginObject
 {
@@ -193,6 +194,8 @@ signals:
     void reseted();
     void rendered();
 };
+
+}
 
 }
 

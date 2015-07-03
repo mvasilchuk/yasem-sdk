@@ -9,6 +9,7 @@
 class QWidget;
 
 namespace yasem {
+namespace SDK {
 
 typedef std::function<QWidget*()> WidgetFactory;
 
@@ -21,6 +22,9 @@ struct WebObjectInfo {
     QString classid;
     WidgetFactory widgetFactory;
 };
+
+}
+
 }
 
 

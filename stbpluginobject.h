@@ -12,8 +12,9 @@
 
 class QWidget;
 
-namespace yasem
-{
+namespace yasem {
+namespace SDK {
+
 class DatasourcePlugin;
 class BrowserPluginObject;
 class GuiPluginObject;
@@ -80,6 +81,8 @@ protected:
 
     void setSubmodelDatasourceField(const QString &group, const QString &field);
 };
+
+}
 
 }
 

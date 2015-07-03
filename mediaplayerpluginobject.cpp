@@ -2,7 +2,7 @@
 #include "browserpluginobject.h"
 #include "abstractwebpage.h"
 
-using namespace yasem;
+using namespace yasem::SDK;
 
 MediaPlayerPluginObject::MediaPlayerPluginObject(Plugin *plugin):
     AbstractPluginObject(plugin),
