@@ -48,6 +48,8 @@ public:
     bool isDirty() const;
     QVariant value() const;
     void setValue(const QVariant& value);
+    bool isEnabled() const;
+    void setEnabled(bool enabled);
     QVariant getDefaultValue() const;
     void reset();
     bool isContainer();
@@ -65,7 +67,9 @@ protected:
     QVariant m_default_value;
     ItemType m_type;
     bool m_is_dirty;
+    bool m_is_enabled;
     QList<SDK::ConfigItem*> m_items;
+
 
 friend class YasemSettings;
 friend class yasem::YasemSettingsImpl;
@@ -105,6 +109,7 @@ protected:
     ContainerType m_container_type;
     QString m_config_file;
     bool m_is_built_in;
+
 
     friend class YasemSettings;
     friend class yasem::YasemSettingsImpl;

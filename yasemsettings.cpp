@@ -26,7 +26,8 @@ ConfigItem::ConfigItem(const QString &key, const QString &title, const QVariant 
     m_value(value),
     m_default_value(value),
     m_type(type),
-    m_is_dirty(false)
+    m_is_dirty(false),
+    m_is_enabled(true)
 {
 
 }
@@ -76,6 +77,16 @@ void ConfigItem::setValue(const QVariant &value) {
     if(!m_is_dirty)
         m_default_value = m_value;
     m_value = value;
+}
+
+bool ConfigItem::isEnabled() const
+{
+    return m_is_enabled;
+}
+
+void ConfigItem::setEnabled(bool enabled)
+{
+    m_is_enabled = enabled;
 }
 
 QVariant ConfigItem::getDefaultValue() const
@@ -168,3 +179,5 @@ QString ConfigContainer::getConfigFile() const {
     Q_ASSERT_X(!config.isEmpty(), "YasemSettings", "Configuration item should belongs to a configuration file!");
     return config;
 }
+
+
