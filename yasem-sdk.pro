@@ -36,7 +36,8 @@ HEADERS += \
     plugindependency.h \
     profile_config_parser.h \
     webobjectinfo.h \
-    stbsubmodel.h
+    stbsubmodel.h \
+    systemstatistics.h
 
 # Plugin headers
 

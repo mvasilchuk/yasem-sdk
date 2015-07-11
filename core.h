@@ -39,7 +39,8 @@ class Core: public QObject
     Q_OBJECT
     Q_ENUMS(VirtualMachine)
 public:
-    enum VirtualMachine {
+    enum VirtualMachine
+    {
         VM_NOT_SET, // VM value is not set yet
         VM_NONE,
         VM_UNKNOWN,

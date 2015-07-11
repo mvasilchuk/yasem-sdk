@@ -13,6 +13,8 @@ class NetworkStatistics: public QObject
 public:
     NetworkStatistics(QObject* parent): QObject(parent){}
 
+public slots:
+    virtual void print() const = 0;
     virtual void reset() = 0;
     virtual void incTotalCount() = 0;
     virtual void intSuccessfulCount() = 0;

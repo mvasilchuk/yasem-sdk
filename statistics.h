@@ -8,6 +8,7 @@ namespace yasem {
 namespace SDK {
 
 class NetworkStatistics;
+class SystemStatistics;
 
 class Statistics: public QObject
 {
@@ -15,10 +16,8 @@ class Statistics: public QObject
 public:
     Statistics(QObject* parent): QObject(parent) {}
 
-    virtual void reset() = 0;
-    virtual void print() = 0;
-    virtual NetworkStatistics* network() = 0;
-
+    virtual NetworkStatistics* network() const = 0;
+    virtual SystemStatistics* system() const = 0;
 };
 
 }
