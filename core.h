@@ -29,7 +29,7 @@
 namespace yasem {
 namespace SDK {
 class StorageInfo;
-class YasemSettings;
+class Config;
 class Statistics;
 class BlockDeviceInfo;
 class CoreNetwork;
@@ -68,7 +68,7 @@ public:
 
     virtual QSettings* settings() = 0;
     virtual QSettings* settings(const QString &filename) = 0;
-    virtual YasemSettings* yasem_settings() = 0;
+    virtual Config* yasem_settings() = 0;
 
     virtual QList<StorageInfo*> storages() = 0;
     virtual CoreNetwork* network() = 0;

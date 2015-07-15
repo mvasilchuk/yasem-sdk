@@ -1,10 +1,10 @@
-#include "mediaplayerpluginobject.h"
-#include "browserpluginobject.h"
-#include "abstractwebpage.h"
+#include "mediaplayer.h"
+#include "browser.h"
+#include "webpage.h"
 
 using namespace yasem::SDK;
 
-MediaPlayerPluginObject::MediaPlayerPluginObject(Plugin *plugin):
+MediaPlayer::MediaPlayer(Plugin *plugin):
     AbstractPluginObject(plugin),
     m_virtual_viewport(QRect(0, 0, 1920, 1080)),
     m_support_opengl(false)
@@ -12,22 +12,27 @@ MediaPlayerPluginObject::MediaPlayerPluginObject(Plugin *plugin):
     reset();
 }
 
-qreal MediaPlayerPluginObject::getOpacity() const
+MediaPlayer *MediaPlayer::instance()
+{
+    return __get_plugin<MediaPlayer*>(ROLE_MEDIA);
+}
+
+qreal MediaPlayer::getOpacity() const
 {
     return m_opacity;
 }
 
-void MediaPlayerPluginObject::setOpacity(qreal opacity)
+void MediaPlayer::setOpacity(qreal opacity)
 {
     m_opacity = opacity;
 }
 
-void MediaPlayerPluginObject::reset()
+void MediaPlayer::reset()
 {
     m_opacity = 1;
 }
 
-void MediaPlayerPluginObject::setViewport(const QRect &requestedRect)
+void MediaPlayer::setViewport(const QRect &requestedRect)
 {
     DEBUG() << "setViewport" << requestedRect << isFullscreen();
     m_player_viewport = requestedRect;
@@ -35,7 +40,7 @@ void MediaPlayerPluginObject::setViewport(const QRect &requestedRect)
     resize();
 }
 
-void MediaPlayerPluginObject::setViewport(const QRect &containerRect, const qreal containerScale, const QRect &requestedRect)
+void MediaPlayer::setViewport(const QRect &containerRect, const qreal containerScale, const QRect &requestedRect)
 {
     //#define USE_RELATIVE_RECT
 
@@ -109,7 +114,7 @@ void MediaPlayerPluginObject::setViewport(const QRect &containerRect, const qrea
     }
 }
 
-QRect MediaPlayerPluginObject::getViewport() const
+QRect MediaPlayer::getViewport() const
 {
     return rect();
 }
@@ -121,18 +126,18 @@ QRect MediaPlayerPluginObject::getViewport() const
  *
  * @param virtual_viewport
  */
-void MediaPlayerPluginObject::setVirtualViewport(const QRect &virtual_viewport)
+void MediaPlayer::setVirtualViewport(const QRect &virtual_viewport)
 {
     m_virtual_viewport = virtual_viewport;
     recalculateViewportScale();
 }
 
-QRect MediaPlayerPluginObject::getVirtualViewport() const
+QRect MediaPlayer::getVirtualViewport() const
 {
     return m_virtual_viewport;
 }
 
-void MediaPlayerPluginObject::recalculateViewportScale()
+void MediaPlayer::recalculateViewportScale()
 {
     if(m_container_rect.width() > 0 && m_container_rect.height() > 0)
     {
@@ -147,19 +152,19 @@ void MediaPlayerPluginObject::recalculateViewportScale()
 
 }
 
-void MediaPlayerPluginObject::setFullscreen(bool value) {
+void MediaPlayer::setFullscreen(bool value) {
     this->m_is_fullscreen = value;
 }
 
-bool MediaPlayerPluginObject::isFullscreen() const {
+bool MediaPlayer::isFullscreen() const {
     return this->m_is_fullscreen;
 }
 
-void MediaPlayerPluginObject::resize() {
-    BrowserPluginObject* browser = dynamic_cast<BrowserPluginObject*>(PluginManager::instance()->getByRole(ROLE_BROWSER));
+void MediaPlayer::resize() {
+    Browser* browser = dynamic_cast<Browser*>(PluginManager::instance()->getByRole(ROLE_BROWSER));
     if(browser)
     {
-        AbstractWebPage* page = browser->getActiveWebPage();
+        WebPage* page = browser->getActiveWebPage();
         if(page)
         {
             QRect rect = page->getPageRect();
@@ -169,7 +174,7 @@ void MediaPlayerPluginObject::resize() {
     }
 }
 
-void MediaPlayerPluginObject::addHook(MediaPlayerPluginObject::HookEvent type, MediaPlayerPluginObject::Hook *hook)
+void MediaPlayer::addHook(MediaPlayer::HookEvent type, MediaPlayer::Hook *hook)
 {
     if(!this->hookList.contains(type))
         this->hookList.insert(type, QSet<Hook*>());
@@ -177,7 +182,7 @@ void MediaPlayerPluginObject::addHook(MediaPlayerPluginObject::HookEvent type, M
     hooks.insert(hook);
 }
 
-void MediaPlayerPluginObject::removeHook(MediaPlayerPluginObject::HookEvent type, MediaPlayerPluginObject::Hook *hook)
+void MediaPlayer::removeHook(MediaPlayer::HookEvent type, MediaPlayer::Hook *hook)
 {
     if(hookList.contains(type))
     {
@@ -191,12 +196,12 @@ void MediaPlayerPluginObject::removeHook(MediaPlayerPluginObject::HookEvent type
     }
 }
 
-QSet<MediaPlayerPluginObject::Hook *> MediaPlayerPluginObject::hooks(MediaPlayerPluginObject::HookEvent type)
+QSet<MediaPlayer::Hook *> MediaPlayer::hooks(MediaPlayer::HookEvent type)
 {
     return hookList.value(type);
 }
 
-bool MediaPlayerPluginObject::processHooks(MediaPlayerPluginObject::HookEvent type)
+bool MediaPlayer::processHooks(MediaPlayer::HookEvent type)
 {
     QSet<Hook*> list = this->hooks(type);
     foreach(Hook* hook, list)
@@ -206,12 +211,12 @@ bool MediaPlayerPluginObject::processHooks(MediaPlayerPluginObject::HookEvent ty
     return true;
 }
 
-QString MediaPlayerPluginObject::getQmlComponentName() const
+QString MediaPlayer::getQmlComponentName() const
 {
     return "";
 }
 
-bool MediaPlayerPluginObject::isSupportOpenGL()
+bool MediaPlayer::isSupportOpenGL()
 {
     return m_support_opengl;
 }

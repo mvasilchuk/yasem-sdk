@@ -16,13 +16,13 @@ namespace yasem {
 namespace SDK {
 
 class DatasourcePlugin;
-class BrowserPluginObject;
-class GuiPluginObject;
+class Browser;
+class GUI;
 class BaseWidget;
-class MediaPlayerPluginObject;
+class MediaPlayer;
 class StbPluginObject;
 class Profile;
-class AbstractWebPage;
+class WebPage;
 class StbPluginObjectPrivate;
 
 class StbPluginObject: public AbstractPluginObject
@@ -42,11 +42,11 @@ public:
 public slots:
     virtual PluginObjectResult init();
 
-    virtual void player(MediaPlayerPluginObject* player);
-    virtual MediaPlayerPluginObject* player();
+    virtual void player(MediaPlayer* player);
+    virtual MediaPlayer* player();
 
-    virtual void browser(BrowserPluginObject* browser);
-    virtual BrowserPluginObject* browser();
+    virtual void browser(Browser* browser);
+    virtual Browser* browser();
 
     virtual QList<WebObjectInfo> getWebObjects();
     virtual QHash<int, RC_KEY> getKeyCodeMap();
@@ -69,7 +69,7 @@ public slots:
 
     virtual QString getProfileClassId() = 0;
     virtual Profile* createProfile(const QString& id = "") = 0;
-    virtual void initObject(AbstractWebPage* page) = 0;
+    virtual void initObject(WebPage* page) = 0;
     virtual QString getIcon(const QSize &size = QSize()) = 0;
 
 protected:

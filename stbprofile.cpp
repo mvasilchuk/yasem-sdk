@@ -148,12 +148,12 @@ void Profile::setSubmodel(const StbSubmodel &submodel)
     this->submodel = submodel;
 }
 
-void Profile::setPage(AbstractWebPage *page)
+void Profile::setPage(WebPage *page)
 {
     this->m_page = page;
 }
 
-AbstractWebPage *Profile::page() const
+WebPage *Profile::page() const
 {
     return m_page;
 }

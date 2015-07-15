@@ -18,14 +18,14 @@ namespace yasem {
 namespace SDK {
 class StbPluginObject;
 class CustomKeyEvent;
-class AbstractWebPage;
+class WebPage;
 
-class BrowserPluginObject: public AbstractPluginObject
+class Browser: public AbstractPluginObject
 {
     Q_OBJECT
 public:
-    BrowserPluginObject(Plugin* plugin): AbstractPluginObject(plugin){}
-    virtual ~BrowserPluginObject(){
+    Browser(Plugin* plugin): AbstractPluginObject(plugin){}
+    virtual ~Browser(){
         m_use_qml = false;
     }
 
@@ -61,12 +61,12 @@ public:
 
     virtual void setupMousePositionHandler(const QObject *receiver, const char* method) = 0;
 
-    virtual AbstractWebPage* getFirstPage() = 0;
+    virtual WebPage* getFirstPage() = 0;
 
     virtual QString getQmlComponentName() { return ""; }
 
-    virtual AbstractWebPage* createNewPage(bool child = false) = 0;
-    virtual AbstractWebPage* getActiveWebPage() = 0;
+    virtual WebPage* createNewPage(bool child = false) = 0;
+    virtual WebPage* getActiveWebPage() = 0;
 
     virtual void setUseQml(bool use) { m_use_qml = use; }
     virtual bool isUsingQml() const { return m_use_qml; }

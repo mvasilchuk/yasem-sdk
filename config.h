@@ -10,13 +10,13 @@
 
 namespace yasem {
 
-class YasemSettingsImpl;
+class ConfigImpl;
 class CoreImpl;
 
 namespace SDK {
 
 class ConfigTreeGroup;
-class YasemSettings;
+class Config;
 
 class ConfigItem: public QObject
 {
@@ -71,8 +71,8 @@ protected:
     QList<SDK::ConfigItem*> m_items;
 
 
-friend class YasemSettings;
-friend class yasem::YasemSettingsImpl;
+friend class Config;
+friend class yasem::ConfigImpl;
 };
 
 class ListConfigItem: public ConfigItem
@@ -111,8 +111,8 @@ protected:
     bool m_is_built_in;
 
 
-    friend class YasemSettings;
-    friend class yasem::YasemSettingsImpl;
+    friend class Config;
+    friend class yasem::ConfigImpl;
 };
 
 class ConfigTreeGroup: public ConfigContainer {
@@ -127,17 +127,17 @@ public:
 
 protected:
 
-    friend class YasemSettings;
-    friend class YasemSettingsImpl;
+    friend class Config;
+    friend class ConfigImpl;
 };
 
-class YasemSettings: public QObject
+class Config: public QObject
 {
     Q_OBJECT
 
 public:
-    YasemSettings(QObject* parent): QObject(parent) {}
-    virtual ~YasemSettings() {}
+    Config(QObject* parent): QObject(parent) {}
+    virtual ~Config() {}
 
     virtual bool addConfigGroup(ConfigTreeGroup* group) = 0;
 

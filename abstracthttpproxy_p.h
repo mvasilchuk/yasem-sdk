@@ -6,12 +6,12 @@
 namespace yasem {
 namespace SDK {
 
-class AbstractHttpProxy;
+class HttpProxy;
 
-class AbstractHttpProxyPrivate
+class HttpProxyPrivate
 {
 public:
-    explicit AbstractHttpProxyPrivate(AbstractHttpProxy* q) :
+    explicit HttpProxyPrivate(HttpProxy* q) :
         q_ptr(q),
         m_host_name(""),
         m_port(0),
@@ -19,14 +19,14 @@ public:
     {
     }
 
-    virtual ~AbstractHttpProxyPrivate() {}
+    virtual ~HttpProxyPrivate() {}
 protected:
-    AbstractHttpProxy *q_ptr;
+    HttpProxy *q_ptr;
     QString m_host_name;
     quint16 m_port;
     quint16 m_max_rps;
 
-    friend class AbstractHttpProxy;
+    friend class HttpProxy;
 };
 }
 }

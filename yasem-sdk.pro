@@ -16,12 +16,12 @@ SOURCES += \
     plugin.cpp \
     yasemsettings.cpp \
     sambanode.cpp \
-    diskinfo.cpp
+    diskinfo.cpp \
+    gui.cpp
 
 HEADERS += \
     plugin.h \
     plugin_p.h \
-    yasemsettings.h \
     core.h \
     statistics.h \
     networkstatistics.h \
@@ -37,7 +37,12 @@ HEADERS += \
     profile_config_parser.h \
     webobjectinfo.h \
     stbsubmodel.h \
-    systemstatistics.h
+    systemstatistics.h \
+    mediaplayer.h \
+    browser.h \
+    webpage.h \
+    gui.h \
+    config.h
 
 # Plugin headers
 
@@ -50,19 +55,14 @@ SOURCES += \
 
 HEADERS += \
     abstractpluginobject.h \
-    guipluginobject.h \
     datasourceplugin.h \
     datasourcepluginobject.h \
-    browserpluginobject.h \
-    abstractwebpage.h \
     abstracthttpproxy.h \
     abstracthttpproxy_p.h \
     webserverplugin.h \
     webserverplugin_p.h \
     stbpluginobject.h \
     stbpluginobject_p.h \
-    mediaplayerpluginobject.h \
-    browserpluginobject.h \
     diskinfo.h \
     customkeyevent.h \
     stbprofile.h

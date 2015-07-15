@@ -1,4 +1,4 @@
-#include "yasemsettings.h"
+#include "config.h"
 #include "macros.h"
 
 using namespace yasem::SDK;

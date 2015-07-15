@@ -29,25 +29,25 @@ PluginObjectResult StbPluginObject::init()
     return PLUGIN_OBJECT_RESULT_OK;
 }
 
-void StbPluginObject::player(MediaPlayerPluginObject *player)
+void StbPluginObject::player(MediaPlayer *player)
 {
     Q_D(StbPluginObject);
     d->mediaPlayer = player;
 }
 
-MediaPlayerPluginObject *StbPluginObject::player()
+MediaPlayer *StbPluginObject::player()
 {
     Q_D(StbPluginObject);
     return d->mediaPlayer;
 }
 
-void StbPluginObject::browser(BrowserPluginObject *browser)
+void StbPluginObject::browser(Browser *browser)
 {
     Q_D(StbPluginObject);
     d->browserPlugin = browser;
 }
 
-BrowserPluginObject *StbPluginObject::browser()
+Browser *StbPluginObject::browser()
 {
     Q_D(StbPluginObject);
     return d->browserPlugin;

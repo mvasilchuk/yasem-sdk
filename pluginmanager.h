@@ -69,7 +69,6 @@ public:
     //virtual PLUGIN_ERROR_CODES connectSlots();
     virtual QList<Plugin*> getPlugins(PluginRole role, bool active_only) = 0;
     virtual AbstractPluginObject* getByRole(PluginRole role, bool show_warning = true) = 0;
-    virtual QList<AbstractPluginObject*> getAllByRole(PluginRole role, bool active_only = true) = 0;
     virtual Plugin* getByIID(const QString &iid) = 0;
     virtual void setPluginDir(const QString &pluginDir) = 0;
     virtual QString getPluginDir() = 0;
@@ -78,6 +77,7 @@ public:
 protected:
     PluginManager() {}
     QList<Plugin*> plugins;
+    QHash<PluginRole, QList<AbstractPluginObject*>> m_plugin_objects;
     virtual PluginFlag parseFlags(const QString &flagsStr) = 0;
     QString pluginDir;
 

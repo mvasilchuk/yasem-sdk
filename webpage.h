@@ -12,7 +12,7 @@ class QWidget;
 namespace yasem {
 namespace SDK {
 
-class AbstractWebPage {
+class WebPage {
 public slots:
     virtual bool load(const QUrl &url) = 0;
     virtual bool openWindow(const QString &url, const QString &params, const QString &name) = 0;

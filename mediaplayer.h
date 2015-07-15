@@ -16,7 +16,7 @@
 namespace yasem {
 namespace SDK {
 
-class MediaPlayerPluginObject: public AbstractPluginObject
+class MediaPlayer: public AbstractPluginObject
 {
     Q_OBJECT
     Q_PROPERTY(int brightness READ getBrightness WRITE setBrightness)
@@ -28,7 +28,7 @@ class MediaPlayerPluginObject: public AbstractPluginObject
     Q_PROPERTY(qint64 duration READ getDuration)
     Q_PROPERTY(int volume READ getVolume WRITE setVolume)
 public:
-    explicit MediaPlayerPluginObject(Plugin* plugin);
+    explicit MediaPlayer(Plugin* plugin);
 
     typedef bool (*hook_function)(void);
 
@@ -46,8 +46,10 @@ public:
         }
     protected:
         hook_function func;
-        friend class MediaPlayerPluginObject;
+        friend class MediaPlayer;
     };
+
+    static MediaPlayer* instance();
 
     virtual void parent(QWidget* parent) = 0;
     virtual QWidget* parent() = 0;

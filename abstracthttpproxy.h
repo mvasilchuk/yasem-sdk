@@ -6,15 +6,15 @@
 namespace yasem {
 namespace SDK {
 
-class AbstractHttpProxyPrivate;
+class HttpProxyPrivate;
 
-class AbstractHttpProxy: public AbstractPluginObject
+class HttpProxy: public AbstractPluginObject
 {
     Q_OBJECT
-    Q_DECLARE_PRIVATE(AbstractHttpProxy)
+    Q_DECLARE_PRIVATE(HttpProxy)
 public:
-    explicit AbstractHttpProxy(Plugin* plugin);
-    virtual ~AbstractHttpProxy();
+    explicit HttpProxy(Plugin* plugin);
+    virtual ~HttpProxy();
 
     virtual void setHostHame(const QString &host_name);
     virtual QString hostName();
@@ -35,7 +35,7 @@ public slots:
 protected:
     //WebServerPlugin(WebServerPluginPrivate &d): d_ptr(&d) {}
     // allow subclasses to initialize with their own concrete Private
-    AbstractHttpProxyPrivate *d_ptr;
+    HttpProxyPrivate *d_ptr;
 };
 
 }

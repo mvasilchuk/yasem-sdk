@@ -3,57 +3,57 @@
 
 using namespace yasem::SDK;
 
-AbstractHttpProxy::AbstractHttpProxy(Plugin* plugin):
+HttpProxy::HttpProxy(Plugin* plugin):
     AbstractPluginObject(plugin),
-    d_ptr(new AbstractHttpProxyPrivate(this))
+    d_ptr(new HttpProxyPrivate(this))
 {
 
 }
 
-AbstractHttpProxy::~AbstractHttpProxy()
+HttpProxy::~HttpProxy()
 {
 
 }
 
-void AbstractHttpProxy::setHostHame(const QString &host_name)
+void HttpProxy::setHostHame(const QString &host_name)
 {
-    Q_D(AbstractHttpProxy);
+    Q_D(HttpProxy);
     d->m_host_name = host_name;
 }
 
-QString AbstractHttpProxy::hostName()
+QString HttpProxy::hostName()
 {
-    Q_D(AbstractHttpProxy);
+    Q_D(HttpProxy);
     return d->m_host_name;
 }
 
-void AbstractHttpProxy::setPort(quint16 port)
+void HttpProxy::setPort(quint16 port)
 {
-    Q_D(AbstractHttpProxy);
+    Q_D(HttpProxy);
     d->m_port = port;
 }
 
-quint16 AbstractHttpProxy::port()
+quint16 HttpProxy::port()
 {
-    Q_D(AbstractHttpProxy);
+    Q_D(HttpProxy);
     return d->m_port;
 }
 
-void AbstractHttpProxy::setMaxRequestPerSecond(quint16 max_rps)
+void HttpProxy::setMaxRequestPerSecond(quint16 max_rps)
 {
-    Q_D(AbstractHttpProxy);
+    Q_D(HttpProxy);
     d->m_max_rps = max_rps;
 }
 
-quint16 AbstractHttpProxy::getMaxRequestPerSecond()
+quint16 HttpProxy::getMaxRequestPerSecond()
 {
-    Q_D(AbstractHttpProxy);
+    Q_D(HttpProxy);
     return d->m_max_rps;
 }
 
-bool AbstractHttpProxy::isRpsLimited()
+bool HttpProxy::isRpsLimited()
 {
-    Q_D(AbstractHttpProxy);
+    Q_D(HttpProxy);
     return d->m_max_rps > 0;
 }
 

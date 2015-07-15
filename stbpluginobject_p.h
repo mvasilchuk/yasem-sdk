@@ -15,9 +15,9 @@ namespace SDK {
 
 class StbPluginObject;
 class DatasourcePluginObject;
-class MediaPlayerPluginObject;
-class GuiPluginObject;
-class BrowserPluginObject;
+class MediaPlayer;
+class GUI;
+class Browser;
 
 class StbPluginObjectPrivate {
     Q_DECLARE_PUBLIC(StbPluginObject)
@@ -30,10 +30,10 @@ public:
 
     QHash<QString, QObject*> api;
     DatasourcePluginObject* datasourceInstance;
-    MediaPlayerPluginObject* mediaPlayer;
+    MediaPlayer* mediaPlayer;
     QUrl portalUrl;
-    GuiPluginObject* guiPlugin;
-    BrowserPluginObject* browserPlugin;
+    GUI* guiPlugin;
+    Browser* browserPlugin;
     QList<WebObjectInfo> webObjects;
     QHash<int, RC_KEY> keyCodeMap;
     QList<StbSubmodel> subModels;

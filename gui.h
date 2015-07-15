@@ -11,13 +11,15 @@ class QMenu;
 namespace yasem {
 namespace SDK {
 
-class GuiPluginObject: public AbstractPluginObject
+class GUI: public AbstractPluginObject
 {
     Q_OBJECT
 public:
-    explicit GuiPluginObject(Plugin* plugin):
+    explicit GUI(Plugin* plugin):
         AbstractPluginObject(plugin) {}
-    virtual ~GuiPluginObject(){}
+    virtual ~GUI(){}
+
+    static GUI* instance();
 
     virtual QRect getWindowRect() = 0;
     virtual void setWindowRect(const QRect &rect) = 0;
@@ -28,7 +30,6 @@ public:
     virtual void repaintGui() = 0;
     virtual QList<QMenu*> getMenuItems() = 0;
     virtual QRect widgetRect() = 0;
-
 };
 
 }

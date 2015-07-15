@@ -21,7 +21,7 @@ namespace SDK {
 
 class DatasourcePluginObject;
 class StbPluginObject;
-class AbstractWebPage;
+class WebPage;
 
 class Profile
 {
@@ -74,8 +74,8 @@ public:
     StbSubmodel& getSubmodel();
     void setSubmodel(const StbSubmodel& submodel);
 
-    void setPage(AbstractWebPage* page);
-    AbstractWebPage* page() const;
+    void setPage(WebPage* page);
+    WebPage* page() const;
 
 
 protected:
@@ -91,7 +91,7 @@ protected:
     QHash<QString, QSize> portalResolutions;
     QHash<QString, QSize> videoResolutions;
     ProfileConfiguration profileConfiguration;
-    AbstractWebPage* m_page;
+    WebPage* m_page;
 
 signals:
 

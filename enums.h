@@ -21,7 +21,7 @@ enum TOP_GUI_OBJECT {
 };
 
 enum AspectRatio {
-    ASPECT_RATIO_AUTO,
+    ASPECT_RATIO_AUTO,      // Qt::KeepAspectRatio
     ASPECT_RATIO_1_1,
     ASPECT_RATIO_5_4,
     ASPECT_RATIO_4_3,
@@ -32,7 +32,9 @@ enum AspectRatio {
     ASPECT_RATIO_16_10,
     ASPECT_RATIO_16_9,
     ASPECT_RATIO_2_35_1,
-    ASPECT_RATIO_20_9
+    ASPECT_RATIO_20_9,
+    ASPECT_RATIO_FILL,      // Qt::IgnoreAspectRatio
+    ASPECT_RATIO_EXPANDING  // Qt::KeepAspectRatioByExpanding
 };
 
 enum PluginErrorCodes {
@@ -202,7 +204,8 @@ enum MediaStatus
     BufferingMedia, // NOT IMPLEMENTED
     BufferedMedia, // when playing //NOT IMPLEMENTED
     EndOfMedia,
-    InvalidMedia // what if loop > 0 or stopPosition() is not mediaStopPosition()?
+    InvalidMedia, // what if loop > 0 or stopPosition() is not mediaStopPosition()?,
+    VideoInfoReceived
 };
 
 }
