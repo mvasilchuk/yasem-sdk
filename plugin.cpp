@@ -235,7 +235,7 @@ bool Plugin::isMultithreadingEnabled()
     return d->m_multithreading_enabled;
 }
 
-void Plugin::add_dependency(const PluginDependency &dependency)
+void Plugin::add_dependency(const PluginDependency& dependency)
 {
     Q_D(Plugin);
     d->m_dependency_list.append(dependency);

@@ -14,9 +14,8 @@
 namespace yasem {
 namespace SDK {
 
-class Plugin;
 class AbstractPluginObject;
-
+class Plugin;
 
 struct PluginRoleData {
 
@@ -68,7 +67,7 @@ public:
     virtual PluginErrorCodes deinitPlugins() = 0;
     //virtual PLUGIN_ERROR_CODES connectSlots();
     virtual QList<Plugin*> getPlugins(PluginRole role, bool active_only) = 0;
-    virtual AbstractPluginObject* getByRole(PluginRole role, bool show_warning = true) = 0;
+    virtual AbstractPluginObject* getByRole(PluginRole role, bool show_warning = true) const = 0;
     virtual Plugin* getByIID(const QString &iid) = 0;
     virtual void setPluginDir(const QString &pluginDir) = 0;
     virtual QString getPluginDir() = 0;

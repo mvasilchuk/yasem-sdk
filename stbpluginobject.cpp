@@ -59,7 +59,7 @@ QList<WebObjectInfo> StbPluginObject::getWebObjects()
     return d->webObjects;
 }
 
-QHash<int, RC_KEY> StbPluginObject::getKeyCodeMap()
+QHash<int, GUI::RcKey> StbPluginObject::getKeyCodeMap()
 {
     Q_D(StbPluginObject);
     return d->keyCodeMap;

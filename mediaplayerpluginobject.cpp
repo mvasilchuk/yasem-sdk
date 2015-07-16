@@ -1,6 +1,7 @@
 #include "mediaplayer.h"
 #include "browser.h"
 #include "webpage.h"
+#include "pluginmanager.h"
 
 using namespace yasem::SDK;
 
@@ -161,7 +162,7 @@ bool MediaPlayer::isFullscreen() const {
 }
 
 void MediaPlayer::resize() {
-    Browser* browser = dynamic_cast<Browser*>(PluginManager::instance()->getByRole(ROLE_BROWSER));
+    Browser* browser = __get_plugin<Browser*>(ROLE_BROWSER);
     if(browser)
     {
         WebPage* page = browser->getActiveWebPage();

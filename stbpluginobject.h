@@ -2,6 +2,7 @@
 #define STBPLUGIN_H
 
 #include "enums.h"
+#include "gui.h"
 #include "stbsubmodel.h"
 #include "webobjectinfo.h"
 #include "abstractpluginobject.h"
@@ -17,7 +18,6 @@ namespace SDK {
 
 class DatasourcePlugin;
 class Browser;
-class GUI;
 class BaseWidget;
 class MediaPlayer;
 class StbPluginObject;
@@ -49,7 +49,7 @@ public slots:
     virtual Browser* browser();
 
     virtual QList<WebObjectInfo> getWebObjects();
-    virtual QHash<int, RC_KEY> getKeyCodeMap();
+    virtual QHash<int, GUI::RcKey> getKeyCodeMap();
 
     virtual bool addWebObject(const QString &name, QWidget* widget, const QString &mimeType, const QString &classid, const QString &description);
     virtual bool addWebObject(const QString &name, const QString &mimeType, const QString &classid, const QString &description, std::function < QWidget*() > widgetFactory);

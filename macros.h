@@ -30,12 +30,6 @@ namespace yasem
 #define ONLY_SUPPORTED_ON_LINUX ONLY_SUPPORTED_ON("linux")
 #define ONLY_SUPPORTED_ON_WINDOWS ONLY_SUPPORTED_ON("Windows")
 
-template <typename T, typename R>
-T __get_plugin(R role)
-{
-    return dynamic_cast<T>(SDK::PluginManager::instance()->getByRole(role));
-}
-
 
 #define S1(x) #x
 #define S2(x) S1(x)
@@ -102,6 +96,16 @@ void __call_method(T* obj, Fn&& fn)
 
 #define CHECK_OR_RETURN_VOID(object) \
     do { if(!object) { WARN_NULL_OBJECT(object); return; } } while(0)
+
+namespace SDK {
+
+template <typename T, typename R>
+T __get_plugin(R role)
+{
+    return dynamic_cast<T>(PluginManager::instance()->getByRole(role));
+}
+
+}
 
 }
 

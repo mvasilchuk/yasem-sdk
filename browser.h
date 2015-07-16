@@ -3,6 +3,7 @@
 
 #include "enums.h"
 #include "abstractpluginobject.h"
+#include "gui.h"
 
 #include <QSize>
 #include <QObject>
@@ -53,9 +54,9 @@ public:
     virtual QString browserRootDir() = 0;
     virtual void setUserAgent(const QString &userAgent) = 0;
     virtual void addFont(const QString &fileName) = 0;
-    virtual void registerKeyEvent(RC_KEY rc_key, int keyCode) = 0;
-    virtual void registerKeyEvent(RC_KEY rc_key, int keyCode, int which, bool alt = false, bool ctrl = false, bool shift = false) = 0;
-    virtual void registerKeyEvent(RC_KEY rc_key, int keyCode, int which, int keyCode2, int which2, bool alt = false, bool ctrl = false, bool shift = false) = 0;
+    virtual void registerKeyEvent(GUI::RcKey rc_key, int keyCode) = 0;
+    virtual void registerKeyEvent(GUI::RcKey rc_key, int keyCode, int which, bool alt = false, bool ctrl = false, bool shift = false) = 0;
+    virtual void registerKeyEvent(GUI::RcKey rc_key, int keyCode, int which, int keyCode2, int which2, bool alt = false, bool ctrl = false, bool shift = false) = 0;
     virtual void clearKeyEvents() = 0;
     virtual void passEvent(QEvent *event) = 0;
 

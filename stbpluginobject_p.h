@@ -35,7 +35,7 @@ public:
     GUI* guiPlugin;
     Browser* browserPlugin;
     QList<WebObjectInfo> webObjects;
-    QHash<int, RC_KEY> keyCodeMap;
+    QHash<int, GUI::RcKey> keyCodeMap;
     QList<StbSubmodel> subModels;
     QString submodelDatasourceGroup;
     QString submodelDatasourceField;

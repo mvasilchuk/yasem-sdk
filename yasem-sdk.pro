@@ -17,7 +17,8 @@ SOURCES += \
     yasemsettings.cpp \
     sambanode.cpp \
     diskinfo.cpp \
-    gui.cpp
+    gui.cpp \
+    plugindependency.cpp
 
 HEADERS += \
     plugin.h \

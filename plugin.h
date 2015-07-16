@@ -154,6 +154,8 @@ protected:
 }
 }
 
+
+
 #define Plugin_iid "com.mvas.yasem.sdk.Plugin/1.0"
 
 QT_BEGIN_NAMESPACE

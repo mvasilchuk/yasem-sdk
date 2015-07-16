@@ -3,6 +3,7 @@
 
 #include "enums.h"
 #include "diskinfo.h"
+#include "gui.h"
 
 #include <functional>
 #include <stdio.h>
@@ -76,7 +77,6 @@ public:
     virtual VirtualMachine getVM() = 0;
 
     virtual QThread* mainThread() = 0;
-    virtual QHash<QString, RC_KEY> getKeycodeHashes() = 0;
 
     static void printCallStack()
     {
@@ -109,7 +109,7 @@ protected:
     Core(QObject* parent): QObject(parent){}
     Core(Core const&);
 
-    QHash<QString, RC_KEY> keycode_hashes;
+    QHash<QString, GUI::RcKey> keycode_hashes;
     QHash<QString, BlockDeviceInfo*> block_device_tree;
     QHash<HwinfoLineTypes, QRegularExpression> hwinfo_regex_list;
 private:
