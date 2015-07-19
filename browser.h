@@ -8,6 +8,7 @@
 #include <QSize>
 #include <QObject>
 #include <QMetaMethod>
+#include <QSslError>
 
 class QRect;
 class QUrl;
@@ -33,6 +34,12 @@ public:
     enum TopWidget {
         TOP_WIDGET_BROWSER,
         TOP_WIDGET_PLAYER
+    };
+
+    enum SslStatus {
+        PLAINTEXT,
+        ENCRYPTED,
+        SSL_ERROR
     };
 
     virtual void setParentWidget(QWidget *parent) = 0;
@@ -87,6 +94,9 @@ protected:
 Q_SIGNALS:
     void topWidgetChanged();
 
+    void page_loading_started(const QString& url);
+    void connection_encrypted(const QString& url);
+    void encryption_error(const QString& url, const QList<QSslError> &errors);
 };
 }
 }
