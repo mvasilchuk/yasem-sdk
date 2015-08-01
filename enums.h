@@ -168,7 +168,8 @@ public:*/
         BufferedMedia, // when playing //NOT IMPLEMENTED
         EndOfMedia,
         InvalidMedia, // what if loop > 0 or stopPosition() is not mediaStopPosition()?,
-        VideoInfoReceived
+        VideoInfoReceived,
+        MediaInfoReceived = 100 // Both audio and video
     };
 
 /*}; */

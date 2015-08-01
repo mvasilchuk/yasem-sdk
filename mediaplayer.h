@@ -12,6 +12,7 @@
 #include <QSet>
 #include <QDebug>
 #include <QPainter>
+#include <QSize>
 
 namespace yasem {
 namespace SDK {
@@ -31,6 +32,31 @@ public:
     explicit MediaPlayer(Plugin* plugin);
 
     typedef bool (*hook_function)(void);
+
+    struct MediaInfo {
+        QString container;
+        QString encoder;
+
+        QString video_codec;
+        QString audio_codec;
+        uint audio_bitrate;
+        uint min_bitrate;
+        uint max_bitrate;
+
+        QString contributing_artist;
+        QString title;
+        QString language;
+
+        QSize pixel_ratio;
+        QSize resolution;
+    } m_media_info;
+
+    enum MediaError {
+        MEDIA_ERROR_NO_ERROR,
+        MEDIA_ERROR_SERVICE_MISSING,
+        MEDIA_ERROR_RESOURCE_ERROR,
+        MEDIA_ERROR_RESOURCE_BUSY
+    };
 
     enum HookEvent {
         HOOK_ALL,
@@ -174,6 +200,7 @@ signals:
     void contrastChanged(int val);
     void saturationChanged(int val);
     void statusChanged(MediaStatus status);
+    void errorHappened(MediaError error);
 
 protected:
     QRect m_player_viewport;

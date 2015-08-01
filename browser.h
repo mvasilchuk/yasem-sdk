@@ -37,6 +37,7 @@ public:
     };
 
     enum SslStatus {
+        SSL_UNDEFINED,
         PLAINTEXT,
         ENCRYPTED,
         SSL_ERROR

@@ -19,6 +19,7 @@ public:
     qint64 available;
     QString model;
     QString vendor;
+    bool writable = true;
 
     QString toString();
 
