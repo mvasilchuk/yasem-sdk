@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QList>
+#include <QSharedPointer>
 
 #include <functional>
 
@@ -11,7 +12,7 @@ class QWidget;
 namespace yasem {
 namespace SDK {
 
-typedef std::function<QWidget*()> WidgetFactory;
+typedef std::function<QWidget* ()> WidgetFactory;
 
 struct WebObjectInfo {
     QString name;

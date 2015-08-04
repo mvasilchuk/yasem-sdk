@@ -23,6 +23,7 @@ class StbPluginObjectPrivate {
     Q_DECLARE_PUBLIC(StbPluginObject)
 public:
     explicit StbPluginObjectPrivate(StbPluginObject* q);
+    virtual ~StbPluginObjectPrivate();
 
 protected:
      StbPluginObject* q_ptr;

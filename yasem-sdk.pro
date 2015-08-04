@@ -18,7 +18,10 @@ SOURCES += \
     sambanode.cpp \
     diskinfo.cpp \
     gui.cpp \
-    plugindependency.cpp
+    plugindependency.cpp \
+    pluginmanager.cpp \
+    browser.cpp \
+    abstractpluginobject.cpp
 
 HEADERS += \
     plugin.h \
@@ -43,7 +46,7 @@ HEADERS += \
     browser.h \
     webpage.h \
     gui.h \
-    config.h
+    yasemsettings.h
 
 # Plugin headers
 

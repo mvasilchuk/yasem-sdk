@@ -32,11 +32,11 @@ public:
     virtual ~PluginPrivate() {}
 
     Plugin *q_ptr; // q-ptr points to the API class
-    QHash<PluginRole, AbstractPluginObject*> m_role_list;
+    QHash<PluginRole, QSharedPointer<AbstractPluginObject>> m_role_list;
     QList<PluginDependency> m_dependency_list;
     QList<PluginConflict> m_static_conflicts;
 
-    QList<Plugin*> m_runtime_conflicts;
+    QList<QSharedPointer<Plugin>> m_runtime_conflicts;
 
     QString m_IID;
     QString m_className;

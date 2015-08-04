@@ -62,10 +62,11 @@ signals:
 
 protected:
     ProfileManager(QObject* parent): QObject(parent) {}
-    QSet<Profile*> profilesList;
+    virtual ~ProfileManager() {};
+    QSet<Profile*> m_profiles_list;
     QMap<QString, StbPluginObject*> profileClasses;
     Profile* activeProfile;
-    QStack<Profile*> profileStack;
+    QStack<Profile*> m_profiles_stack;
 
     virtual QString createUniqueName(const QString &classId, const QString &baseName = "", bool overwrite = false) = 0;
 

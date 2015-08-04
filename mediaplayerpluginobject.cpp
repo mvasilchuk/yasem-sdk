@@ -13,6 +13,11 @@ MediaPlayer::MediaPlayer(Plugin *plugin):
     reset();
 }
 
+MediaPlayer::~MediaPlayer()
+{
+
+}
+
 MediaPlayer *MediaPlayer::instance()
 {
     return __get_plugin<MediaPlayer*>(ROLE_MEDIA);
@@ -207,7 +212,7 @@ bool MediaPlayer::processHooks(MediaPlayer::HookEvent type)
     QSet<Hook*> list = this->hooks(type);
     foreach(Hook* hook, list)
     {
-        if(!hook->func()) return false;
+        if(!hook->m_func()) return false;
     }
     return true;
 }

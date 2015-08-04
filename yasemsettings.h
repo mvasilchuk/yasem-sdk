@@ -137,7 +137,7 @@ class Config: public QObject
 
 public:
     Config(QObject* parent): QObject(parent) {}
-    virtual ~Config() {}
+    virtual ~Config();
 
     virtual bool addConfigGroup(ConfigTreeGroup* group) = 0;
 

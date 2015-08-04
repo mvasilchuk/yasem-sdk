@@ -102,7 +102,7 @@ namespace SDK {
 template <typename T, typename R>
 T __get_plugin(R role)
 {
-    return dynamic_cast<T>(PluginManager::instance()->getByRole(role));
+    return dynamic_cast<T>(PluginManager::instance()->getByRole(role).data());
 }
 
 }

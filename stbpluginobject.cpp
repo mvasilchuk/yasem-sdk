@@ -2,6 +2,7 @@
 #include "stbpluginobject.h"
 #include "stbpluginobject_p.h"
 #include "profilemanager.h"
+#include "macros.h"
 
 using namespace yasem::SDK;
 
@@ -14,10 +15,12 @@ StbPluginObject::StbPluginObject(Plugin* plugin):
 
 StbPluginObject::~StbPluginObject()
 {
-
+    STUB() << this->objectName();
+    cleanApi();
+    delete d_ptr;
 }
 
-QHash<QString, QObject *> StbPluginObject::getStbApiList()
+QHash<QString, QObject*> StbPluginObject::getStbApiList()
 {
     Q_D(StbPluginObject);
     return d->api;
@@ -65,7 +68,7 @@ QHash<int, GUI::RcKey> StbPluginObject::getKeyCodeMap()
     return d->keyCodeMap;
 }
 
-bool StbPluginObject::addWebObject(const QString &name, QWidget *widget, const QString &mimeType, const QString &classid, const QString &description)
+bool StbPluginObject::addWebObject(const QString &name, QWidget* widget, const QString &mimeType, const QString &classid, const QString &description)
 {
     Q_D(StbPluginObject);
     WebObjectInfo webObject;
@@ -80,7 +83,7 @@ bool StbPluginObject::addWebObject(const QString &name, QWidget *widget, const Q
     return true;
 }
 
-bool StbPluginObject::addWebObject(const QString &name, const QString &mimeType, const QString &classid, const QString &description, std::function<QWidget *()> widgetFactory)
+bool StbPluginObject::addWebObject(const QString &name, const QString &mimeType, const QString &classid, const QString &description, std::function<QWidget*()> widgetFactory)
 {
     Q_D(StbPluginObject);
     WebObjectInfo webObject;
@@ -95,13 +98,25 @@ bool StbPluginObject::addWebObject(const QString &name, const QString &mimeType,
     return true;
 }
 
-QHash<QString, QObject *> &StbPluginObject::getApi()
+QHash<QString, QObject*> &StbPluginObject::getApi()
 {
     Q_D(StbPluginObject);
     return d->api;
 }
 
-QList<StbSubmodel> &StbPluginObject::getSubmodels()
+void StbPluginObject::cleanApi()
+{
+    Q_D(StbPluginObject);
+    QMutableHashIterator<QString, QObject*> iter(d->api);
+    while(iter.hasNext())
+    {
+        iter.next();
+        DEBUG() << "Removing " << iter.key() << iter.value();
+        iter.remove();
+    }
+}
+
+QList<StbSubmodel>& StbPluginObject::getSubmodels()
 {
     Q_D(StbPluginObject);
     return d->subModels;
@@ -154,4 +169,10 @@ StbPluginObjectPrivate::StbPluginObjectPrivate(StbPluginObject *q):
     guiPlugin(NULL),
     browserPlugin(NULL)
 {
+}
+
+StbPluginObjectPrivate::~StbPluginObjectPrivate()
+{
+    STUB();
+    subModels.clear();
 }

@@ -86,7 +86,7 @@ public:
      */
     Q_INVOKABLE virtual bool has_role(PluginRole role);
 
-    Q_INVOKABLE virtual QHash<PluginRole, AbstractPluginObject*> roles();
+    Q_INVOKABLE virtual QHash<PluginRole, QSharedPointer<AbstractPluginObject>> roles();
 
     Q_INVOKABLE virtual QList<PluginDependency> dependencies();
 
@@ -119,13 +119,15 @@ public:
     Q_INVOKABLE virtual bool isActive();
     Q_INVOKABLE virtual void setActive(bool active);
 
-    Q_INVOKABLE virtual QList<Plugin*> getRuntimeConflicts();
-    Q_INVOKABLE virtual void addRuntimeConflict(Plugin* plugin);
+    Q_INVOKABLE virtual QList<QSharedPointer<Plugin>> getRuntimeConflicts();
+    Q_INVOKABLE virtual void addRuntimeConflict(QSharedPointer<Plugin> plugin);
 
     Q_INVOKABLE virtual QList<PluginConflict> getStaticConflicts();
 
     Q_INVOKABLE virtual bool isMultithreadingEnabled();
 
+    void register_role(PluginRole role, AbstractPluginObject *obj);
+    void register_role(PluginRole role, QSharedPointer<AbstractPluginObject> obj);
 signals:
     void loaded();
     void unloaded();
@@ -143,7 +145,7 @@ signals:
 protected:
     virtual void add_dependency(const PluginDependency &dependency);
     virtual void add_static_conflict(const PluginConflict &conflict_info);
-    virtual void register_role(PluginRole role, AbstractPluginObject* obj);
+
     virtual void setMultithreading(bool enable);
 
 protected:

@@ -17,24 +17,24 @@ Profile::Profile(StbPluginObject *profilePlugin, const QString &id):
     name = getId();
 
     ProfileConfigGroup group(QObject::tr("Main settings"));
-    group.options.append(ConfigOption(DB_TAG_PROFILE, CONFIG_PROFILE_NAME, QObject::tr("Profile name"), QObject::tr("New profile")));
+    group.m_options.append(ConfigOption(DB_TAG_PROFILE, CONFIG_PROFILE_NAME, QObject::tr("Profile name"), QObject::tr("New profile")));
 
     QHash<QString, QString> models;
-    QList<StbSubmodel> submodels = profilePlugin->getSubmodels();
+    QList<StbSubmodel>& submodels = profilePlugin->getSubmodels();
     for(StbSubmodel model: submodels)
     {
         models.insert(model.getId(), model.getName());
     }
 
-    group.options.append(ConfigOption(DB_TAG_PROFILE, CONFIG_SUBMODEL, QObject::tr("Model name"), "","options", "", models));
-    group.options.append(ConfigOption(DB_TAG_PROFILE, CONFIG_LIMIT_MAX_REQUESTS, QObject::tr("Limit max. requests per second"), "0", "string"));
+    group.m_options.append(ConfigOption(DB_TAG_PROFILE, CONFIG_SUBMODEL, QObject::tr("Model name"), "","options", "", models));
+    group.m_options.append(ConfigOption(DB_TAG_PROFILE, CONFIG_LIMIT_MAX_REQUESTS, QObject::tr("Limit max. requests per second"), "0", "string"));
 
     profileConfiguration.groups.append(group);
 }
 
 Profile::~Profile()
 {
-
+    //STUB();
 }
 
 void Profile::setName(const QString &name)

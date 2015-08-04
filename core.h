@@ -51,7 +51,7 @@ public:
 
     static Core* setInstance(Core* inst = 0)
     {
-        static Core* instance = inst;// Guaranteed to be destroyed.
+        static Core* instance = inst;
 
         if(instance == NULL)
             instance = static_cast<Core*>(qApp->property("Core").value<QObject*>());

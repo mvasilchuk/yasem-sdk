@@ -10,6 +10,7 @@
 #include <QHash>
 #include <QDebug>
 #include <QSize>
+#include <QSharedPointer>
 
 class QWidget;
 
@@ -36,8 +37,8 @@ public:
     virtual QHash<QString, QObject*> getStbApiList();
 
 public:
-    QString description;
-    QString webName;
+    QString m_description;
+    QString m_web_name;
 
 public slots:
     virtual PluginObjectResult init();
@@ -58,8 +59,9 @@ public slots:
     virtual void applyFixes() {}
 
     virtual QHash<QString, QObject*>& getApi();
+    virtual void cleanApi();
 
-    virtual QList<StbSubmodel> &getSubmodels();
+    virtual QList<StbSubmodel>& getSubmodels();
 
     virtual StbSubmodel& findSubmodel(const QString &id);
     virtual QString listSubmodels();

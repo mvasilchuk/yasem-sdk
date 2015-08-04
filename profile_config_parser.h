@@ -11,13 +11,13 @@ namespace SDK {
 
 class ConfigOption {
 public:
-    QString tag;
-    QString name;
-    QString defaultValue;
-    QString type;
-    QString title;
-    QString comment;
-    QHash<QString, QString> options;
+    QString m_tag;
+    QString m_name;
+    QString m_default_value;
+    QString m_type;
+    QString m_title;
+    QString m_comment;
+    QHash<QString, QString> m_options;
 
     ConfigOption(){}
 
@@ -29,29 +29,29 @@ public:
                  const QString &comment = "",
                  const QHash<QString, QString> &options = QHash<QString, QString>())
     {
-        this->tag = tag;
-        this->name = name;
-        this->type = type;
-        this->title = title;
-        this->defaultValue = defaultValue;
-        this->type = type;
-        this->comment = comment;
-        this->options = options;
+        this->m_tag = tag;
+        this->m_name = name;
+        this->m_type = type;
+        this->m_title = title;
+        this->m_default_value = defaultValue;
+        this->m_type = type;
+        this->m_comment = comment;
+        this->m_options = options;
     }
 
 };
 
 class ProfileConfigGroup {
 public:
-    QString title;
-    QList<ConfigOption> options;
+    QString m_title;
+    QList<ConfigOption> m_options;
 
     ProfileConfigGroup() {}
 
     ProfileConfigGroup(const QString &title, const QList<ConfigOption> &options = QList<ConfigOption>())
     {
-        this->title = title;
-        this->options = options;
+        this->m_title = title;
+        this->m_options = options;
     }
 };
 

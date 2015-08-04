@@ -30,6 +30,7 @@ class MediaPlayer: public AbstractPluginObject
     Q_PROPERTY(int volume READ getVolume WRITE setVolume)
 public:
     explicit MediaPlayer(Plugin* plugin);
+    virtual ~MediaPlayer();
 
     typedef bool (*hook_function)(void);
 
@@ -68,10 +69,10 @@ public:
     public:
         Hook(hook_function func)
         {
-            this->func = func;
+            this->m_func = func;
         }
     protected:
-        hook_function func;
+        hook_function m_func;
         friend class MediaPlayer;
     };
 

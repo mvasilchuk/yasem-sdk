@@ -1,4 +1,4 @@
-#include "config.h"
+#include "yasemsettings.h"
 #include "macros.h"
 
 using namespace yasem::SDK;
@@ -32,19 +32,40 @@ ConfigItem::ConfigItem(const QString &key, const QString &title, const QVariant 
 
 }
 
-ConfigItem::~ConfigItem() {}
+ConfigItem::~ConfigItem()
+{
+    qDeleteAll(m_items);
+}
 
-ConfigItem::ItemType ConfigItem::getType() { return m_type; }
+ConfigItem::ItemType ConfigItem::getType()
+{
+    return m_type;
+}
 
-QVariant ConfigItem::getValue() { return m_value; }
+QVariant ConfigItem::getValue()
+{
+    return m_value;
+}
 
-QString ConfigItem::getTitle() { return m_title; }
+QString ConfigItem::getTitle()
+{
+    return m_title;
+}
 
-QString ConfigItem::getKey() const { return m_key; }
+QString ConfigItem::getKey() const
+{
+    return m_key;
+}
 
-ConfigItem *ConfigItem::getParentItem() const { return dynamic_cast<ConfigItem*>(parent()); }
+ConfigItem *ConfigItem::getParentItem() const
+{
+    return dynamic_cast<ConfigItem*>(parent());
+}
 
-QList<ConfigItem *> ConfigItem::getItems() const { return m_items; }
+QList<ConfigItem *> ConfigItem::getItems() const
+{
+    return m_items;
+}
 
 void ConfigItem::addItem(ConfigItem *item)
 {
@@ -71,9 +92,13 @@ bool ConfigItem::isDirty() const
     return m_is_dirty;
 }
 
-QVariant ConfigItem::value() const { return m_value; }
+QVariant ConfigItem::value() const
+{
+    return m_value;
+}
 
-void ConfigItem::setValue(const QVariant &value) {
+void ConfigItem::setValue(const QVariant &value)
+{
     if(!m_is_dirty)
         m_default_value = m_value;
     m_value = value;
@@ -105,7 +130,10 @@ void ConfigItem::reset()
     }
 }
 
-bool ConfigItem::isContainer() { return m_type == CONTAINER; }
+bool ConfigItem::isContainer()
+{
+    return m_type == CONTAINER;
+}
 
 ConfigItem *ConfigItem::findItemByKey(const QString &key)
 {
@@ -162,11 +190,18 @@ ConfigContainer::ConfigContainer(const QString &config_file, const QString &id, 
 {
 }
 
-ConfigContainer::~ConfigContainer() {}
+ConfigContainer::~ConfigContainer()
+{
 
-ConfigContainer::ContainerType ConfigContainer::getContainerType() { return m_container_type; }
+}
 
-QString ConfigContainer::getConfigFile() const {
+ConfigContainer::ContainerType ConfigContainer::getContainerType()
+{
+    return m_container_type;
+}
+
+QString ConfigContainer::getConfigFile() const
+{
     QString config = "";
     if(!m_config_file.isEmpty())
         config = m_config_file;
@@ -181,3 +216,9 @@ QString ConfigContainer::getConfigFile() const {
 }
 
 
+
+
+Config::~Config()
+{
+    qDeleteAll(m_config_groups);
+}

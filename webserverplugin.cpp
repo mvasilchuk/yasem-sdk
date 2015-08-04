@@ -14,7 +14,7 @@ WebServerPlugin::WebServerPlugin(Plugin* plugin):
 
 WebServerPlugin::~WebServerPlugin()
 {
-
+    delete d_ptr;
 }
 
 void WebServerPlugin::setRootDirectory(const QString &dir)

@@ -26,10 +26,8 @@ class Browser: public AbstractPluginObject
 {
     Q_OBJECT
 public:
-    Browser(Plugin* plugin): AbstractPluginObject(plugin){}
-    virtual ~Browser(){
-        m_use_qml = false;
-    }
+    Browser(Plugin* plugin);
+    virtual ~Browser();
 
     enum TopWidget {
         TOP_WIDGET_BROWSER,
@@ -72,20 +70,17 @@ public:
 
     virtual WebPage* getFirstPage() = 0;
 
-    virtual QString getQmlComponentName() { return ""; }
+    virtual QString getQmlComponentName();
 
     virtual WebPage* createNewPage(bool child = false) = 0;
     virtual WebPage* getActiveWebPage() = 0;
 
-    virtual void setUseQml(bool use) { m_use_qml = use; }
-    virtual bool isUsingQml() const { return m_use_qml; }
+    virtual void setUseQml(bool use);
+    virtual bool isUsingQml() const;
 
 
-    virtual void setTopWidget(TopWidget top) {
-        m_top_widget = top;
-        emit topWidgetChanged();
-    }
-    virtual TopWidget getTopWidget() { return m_top_widget; }
+    virtual void setTopWidget(TopWidget top);
+    virtual TopWidget getTopWidget();
 
 protected:
     QWidget* activeWebView;

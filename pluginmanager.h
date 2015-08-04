@@ -19,22 +19,11 @@ class Plugin;
 
 struct PluginRoleData {
 
-    PluginRoleData() {}
+    PluginRoleData();
 
-    PluginRoleData(const QString &name, const QString &description, QList<PluginRole> conflicts_with = QList<PluginRole>())
-        :m_name(name),
-         m_description(description),
-         m_conflicts_with(conflicts_with)
-    {
+    PluginRoleData(const QString &name, const QString &description, QList<PluginRole> conflicts_with = QList<PluginRole>());
 
-    }
-
-    PluginRoleData(const PluginRoleData& other)
-        :m_name(other.m_name),
-         m_description(other.m_description),
-         m_conflicts_with(other.m_conflicts_with)
-    {
-    }
+    PluginRoleData(const PluginRoleData& other);
 
     QString m_name;
     QString m_description;
@@ -46,39 +35,28 @@ class PluginManager : public QObject
 {
     Q_OBJECT
 public:
-    static PluginManager* setInstance(PluginManager* inst = 0)
-    {
-        static PluginManager* instance = inst;// Guaranteed to be destroyed.
+    static PluginManager* setInstance(PluginManager* inst = 0);
 
-        if(instance == NULL)
-            instance = static_cast<PluginManager*>(qApp->property("PluginManager").value<QObject*>());
-
-        Q_CHECK_PTR(instance);
-        return instance;
-    }
-
-    static PluginManager* instance()
-    {
-       return setInstance();
-    }
+    static PluginManager* instance();
 
     virtual PluginErrorCodes listPlugins() = 0;
     virtual PluginErrorCodes initPlugins() = 0;
     virtual PluginErrorCodes deinitPlugins() = 0;
     //virtual PLUGIN_ERROR_CODES connectSlots();
-    virtual QList<Plugin*> getPlugins(PluginRole role, bool active_only) = 0;
-    virtual AbstractPluginObject* getByRole(PluginRole role, bool show_warning = true) const = 0;
-    virtual Plugin* getByIID(const QString &iid) = 0;
+    virtual QList<QSharedPointer<Plugin>> getPlugins(PluginRole role, bool active_only) = 0;
+    virtual QSharedPointer<AbstractPluginObject> getByRole(PluginRole role, bool show_warning = true) const = 0;
+    virtual QSharedPointer<Plugin> getByIID(const QString &iid) = 0;
     virtual void setPluginDir(const QString &pluginDir) = 0;
     virtual QString getPluginDir() = 0;
 
     //virtual void loadProfiles() = 0;
 protected:
-    PluginManager() {}
-    QList<Plugin*> plugins;
-    QHash<PluginRole, QList<AbstractPluginObject*>> m_plugin_objects;
+    PluginManager(QObject* parent);
+    virtual ~PluginManager();
+    QList<QSharedPointer<Plugin>> m_plugins;
+    QHash<PluginRole, QList<QSharedPointer<AbstractPluginObject>>> m_plugin_objects;
     virtual PluginFlag parseFlags(const QString &flagsStr) = 0;
-    QString pluginDir;
+    QString m_plugin_dir;
 
     virtual void registerPluginRole(const PluginRole& role, const PluginRoleData& data) = 0;
 

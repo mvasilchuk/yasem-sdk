@@ -18,7 +18,8 @@ Plugin::Plugin(QObject* parent):
 
 Plugin::~Plugin()
 {
-
+    //STUB();
+    delete d_ptr;
 }
 
 bool Plugin::hasFlag(PluginFlag flag)
@@ -33,7 +34,7 @@ void Plugin::addFlag(PluginFlag flag)
 
 PluginErrorCodes Plugin::initialize()
 {
-    for(AbstractPluginObject* obj: roles().values())
+    for(QSharedPointer<AbstractPluginObject> obj: roles().values())
     {
         obj->init();
         obj->setInitialized(true);
@@ -43,7 +44,7 @@ PluginErrorCodes Plugin::initialize()
 
 PluginErrorCodes Plugin::deinitialize()
 {
-    for(AbstractPluginObject* obj: roles().values())
+    for(QSharedPointer<AbstractPluginObject> obj: roles().values())
     {
         obj->deinit();
         obj->setInitialized(false);
@@ -57,7 +58,7 @@ bool Plugin::has_role(PluginRole role)
     return d->m_role_list.contains(role);
 }
 
-QHash<PluginRole, AbstractPluginObject*> Plugin::roles()
+QHash<PluginRole, QSharedPointer<AbstractPluginObject>> Plugin::roles()
 {
     Q_D(Plugin);
     return d->m_role_list;
@@ -211,13 +212,13 @@ void Plugin::setActive(bool active)
     d->m_active = active;
 }
 
-QList<Plugin *> Plugin::getRuntimeConflicts()
+QList<QSharedPointer<Plugin>> Plugin::getRuntimeConflicts()
 {
     Q_D(Plugin);
     return d->m_runtime_conflicts;
 }
 
-void Plugin::addRuntimeConflict(Plugin *plugin)
+void Plugin::addRuntimeConflict(QSharedPointer<Plugin> plugin)
 {
     Q_D(Plugin);
     d->m_runtime_conflicts.append(plugin);
@@ -247,10 +248,15 @@ void Plugin::add_static_conflict(const PluginConflict &conflict_info)
     d->m_static_conflicts.append(conflict_info);
 }
 
-void Plugin::register_role(PluginRole role, AbstractPluginObject* obj)
+void Plugin::register_role(PluginRole role, QSharedPointer<AbstractPluginObject> obj)
 {
     Q_D(Plugin);
     d->m_role_list.insert(role, obj);
+}
+
+void Plugin::register_role(PluginRole role, AbstractPluginObject* obj)
+{
+    register_role(role, QSharedPointer<AbstractPluginObject>(obj));
 }
 
 void Plugin::setMultithreading(bool enable)

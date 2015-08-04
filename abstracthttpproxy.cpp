@@ -12,7 +12,7 @@ HttpProxy::HttpProxy(Plugin* plugin):
 
 HttpProxy::~HttpProxy()
 {
-
+    delete d_ptr;
 }
 
 void HttpProxy::setHostHame(const QString &host_name)

@@ -7,15 +7,15 @@ namespace yasem
 {
 
 struct AudioLangInfo {
-    int pid;
-    QString code2; // ISO 639-1
-    QString code3; // ISO 639-2
+    int m_pid;
+    QString m_code2; // ISO 639-1
+    QString m_code3; // ISO 639-2
 
     AudioLangInfo(int pid, const QString& code2, const QString code3)
     {
-        this->pid = pid;
-        this->code2 = code2;
-        this->code3 = code3;
+        this->m_pid = pid;
+        this->m_code2 = code2;
+        this->m_code3 = code3;
     }
 };
 
