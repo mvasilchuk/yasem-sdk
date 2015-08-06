@@ -34,7 +34,7 @@ void Plugin::addFlag(PluginFlag flag)
 
 PluginErrorCodes Plugin::initialize()
 {
-    for(QSharedPointer<AbstractPluginObject> obj: roles().values())
+    for(AbstractPluginObject* obj: roles().values())
     {
         obj->init();
         obj->setInitialized(true);
@@ -44,7 +44,7 @@ PluginErrorCodes Plugin::initialize()
 
 PluginErrorCodes Plugin::deinitialize()
 {
-    for(QSharedPointer<AbstractPluginObject> obj: roles().values())
+    for(AbstractPluginObject* obj: roles().values())
     {
         obj->deinit();
         obj->setInitialized(false);
@@ -58,7 +58,7 @@ bool Plugin::has_role(PluginRole role)
     return d->m_role_list.contains(role);
 }
 
-QHash<PluginRole, QSharedPointer<AbstractPluginObject>> Plugin::roles()
+QHash<PluginRole, AbstractPluginObject*> Plugin::roles()
 {
     Q_D(Plugin);
     return d->m_role_list;
@@ -248,15 +248,10 @@ void Plugin::add_static_conflict(const PluginConflict &conflict_info)
     d->m_static_conflicts.append(conflict_info);
 }
 
-void Plugin::register_role(PluginRole role, QSharedPointer<AbstractPluginObject> obj)
+void Plugin::register_role(PluginRole role, AbstractPluginObject* obj)
 {
     Q_D(Plugin);
     d->m_role_list.insert(role, obj);
-}
-
-void Plugin::register_role(PluginRole role, AbstractPluginObject* obj)
-{
-    register_role(role, QSharedPointer<AbstractPluginObject>(obj));
 }
 
 void Plugin::setMultithreading(bool enable)
@@ -265,3 +260,14 @@ void Plugin::setMultithreading(bool enable)
     d->m_multithreading_enabled = enable;
 }
 
+PluginPrivate::~PluginPrivate()
+{
+    STUB() << this;
+    /*QMutableHashIterator<PluginRole, QSharedPointer<AbstractPluginObject>> iter(m_role_list);
+    while(iter.hasNext())
+    {
+        iter.next();
+
+        iter.
+    }*/
+}

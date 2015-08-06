@@ -5,8 +5,7 @@ using namespace yasem;
 using namespace SDK;
 
 
-AbstractPluginObject::AbstractPluginObject(Plugin *plugin):
-    QObject((QObject*)plugin),
+AbstractPluginObject::AbstractPluginObject(Plugin* plugin):
     m_plugin(plugin),
     m_is_initialized(false)
 {
@@ -15,7 +14,7 @@ AbstractPluginObject::AbstractPluginObject(Plugin *plugin):
 
 AbstractPluginObject::~AbstractPluginObject()
 {
-    //STUB();
+    STUB() << this;
 }
 
 void AbstractPluginObject::setInitialized(bool value)
@@ -23,12 +22,12 @@ void AbstractPluginObject::setInitialized(bool value)
     m_is_initialized = value;
 }
 
-bool AbstractPluginObject::isInitialized()
+bool AbstractPluginObject::isInitialized() const
 {
     return m_is_initialized;
 }
 
-Plugin *AbstractPluginObject::plugin()
+Plugin* AbstractPluginObject::plugin() const
 {
     return m_plugin;
 }

@@ -41,6 +41,8 @@ public:
         SSL_ERROR
     };
 
+    static Browser* instance();
+
     virtual void setParentWidget(QWidget *parent) = 0;
     virtual QWidget* getParentWidget() = 0;
     virtual QWidget* widget() = 0 ;
@@ -49,8 +51,8 @@ public:
     virtual QRect rect() = 0;
     virtual void scale(qreal scale) = 0;
     virtual qreal scale() = 0;
-    virtual void stb(StbPluginObject* stbPlugin) = 0;
-    virtual StbPluginObject* stb() = 0;
+    virtual void stb(SDK::StbPluginObject* stbPlugin) = 0;
+    virtual SDK::StbPluginObject* stb() = 0;
     virtual void show() = 0;
     virtual void hide() = 0;
     virtual void fullscreen(bool setFullscreen) = 0;
@@ -68,16 +70,15 @@ public:
 
     virtual void setupMousePositionHandler(const QObject *receiver, const char* method) = 0;
 
-    virtual WebPage* getFirstPage() = 0;
+    virtual SDK::WebPage* getFirstPage() = 0;
 
     virtual QString getQmlComponentName();
 
-    virtual WebPage* createNewPage(bool child = false) = 0;
+    virtual SDK::WebPage* createNewPage(bool child = false) = 0;
     virtual WebPage* getActiveWebPage() = 0;
 
     virtual void setUseQml(bool use);
     virtual bool isUsingQml() const;
-
 
     virtual void setTopWidget(TopWidget top);
     virtual TopWidget getTopWidget();

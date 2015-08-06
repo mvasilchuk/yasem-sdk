@@ -11,6 +11,7 @@
 #include <QVariant>
 #include <QSet>
 #include <QStack>
+#include <QSharedPointer>
 
 namespace yasem {
 namespace SDK {
@@ -39,34 +40,34 @@ public:
     }
 
     virtual void loadProfiles() = 0;
-    virtual QSet<Profile*> getProfiles() = 0;
-    virtual Profile* getActiveProfile() = 0;
-    virtual void addProfile(Profile* profile) = 0;
-    virtual void setActiveProfile(Profile* profile) = 0;
-    virtual bool removeProfile(Profile* profile) = 0;
-    virtual Profile* createProfile(const QString &classId, const QString &submodel, const QString &baseName = "", bool overwrite = false) = 0;
+    virtual QSet<QSharedPointer<Profile>> getProfiles() = 0;
+    virtual QSharedPointer<Profile> getActiveProfile() = 0;
+    virtual void addProfile(QSharedPointer<Profile> profile) = 0;
+    virtual void setActiveProfile(QSharedPointer<Profile> profile) = 0;
+    virtual bool removeProfile(QSharedPointer<Profile> profile) = 0;
+    virtual QSharedPointer<SDK::Profile> createProfile(const QString &classId, const QString &submodel, const QString &baseName = "", bool overwrite = false) = 0;
     virtual void registerProfileClassId(const QString &classId, StbPluginObject* profilePlugin) = 0;
-    virtual QMap<QString, StbPluginObject*> getRegisteredClasses() = 0;
+    virtual QMap<QString, SDK::StbPluginObject*> getRegisteredClasses() = 0;
 
-    virtual StbPluginObject* getProfilePluginByClassId(const QString &classId) = 0;
-    virtual Profile* findById(const QString &id) = 0;
-    virtual Profile* findByName(const QString &id) = 0;
-    virtual Profile* backToPreviousProfile() = 0;
+    virtual SDK::StbPluginObject* getProfilePluginByClassId(const QString &classId) = 0;
+    virtual QSharedPointer<SDK::Profile> findById(const QString &id) = 0;
+    virtual QSharedPointer<SDK::Profile> findByName(const QString &id) = 0;
+    virtual QSharedPointer<SDK::Profile> backToPreviousProfile() = 0;
     virtual void backToMainPage() = 0;
     virtual bool canGoBack() = 0;
 
 signals:
-    void profileChanged(Profile* profile);
-    void profileAdded(Profile* profile);
+    void profileChanged(QSharedPointer<SDK::Profile> profile);
+    void profileAdded(QSharedPointer<SDK::Profile> profile);
     void profileRemoved(bool removed);
 
 protected:
-    ProfileManager(QObject* parent): QObject(parent) {}
-    virtual ~ProfileManager() {};
-    QSet<Profile*> m_profiles_list;
-    QMap<QString, StbPluginObject*> profileClasses;
-    Profile* activeProfile;
-    QStack<Profile*> m_profiles_stack;
+    ProfileManager(QObject* parent);
+    ~ProfileManager();
+    QSet<QSharedPointer<Profile>> m_profiles_list;
+    QMap<QString, StbPluginObject*> m_profile_classes;
+    QSharedPointer<Profile> activeProfile;
+    QStack<QSharedPointer<Profile>> m_profiles_stack;
 
     virtual QString createUniqueName(const QString &classId, const QString &baseName = "", bool overwrite = false) = 0;
 

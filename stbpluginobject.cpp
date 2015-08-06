@@ -3,6 +3,8 @@
 #include "stbpluginobject_p.h"
 #include "profilemanager.h"
 #include "macros.h"
+#include "browser.h"
+#include "mediaplayer.h"
 
 using namespace yasem::SDK;
 
@@ -15,9 +17,9 @@ StbPluginObject::StbPluginObject(Plugin* plugin):
 
 StbPluginObject::~StbPluginObject()
 {
-    STUB() << this->objectName();
-    cleanApi();
-    delete d_ptr;
+    STUB() << this;
+    if(d_ptr)
+        delete d_ptr;
 }
 
 QHash<QString, QObject*> StbPluginObject::getStbApiList()
@@ -32,28 +34,14 @@ PluginObjectResult StbPluginObject::init()
     return PLUGIN_OBJECT_RESULT_OK;
 }
 
-void StbPluginObject::player(MediaPlayer *player)
+MediaPlayer* StbPluginObject::player()
 {
-    Q_D(StbPluginObject);
-    d->mediaPlayer = player;
+    return SDK::MediaPlayer::instance();
 }
 
-MediaPlayer *StbPluginObject::player()
+Browser* StbPluginObject::browser()
 {
-    Q_D(StbPluginObject);
-    return d->mediaPlayer;
-}
-
-void StbPluginObject::browser(Browser *browser)
-{
-    Q_D(StbPluginObject);
-    d->browserPlugin = browser;
-}
-
-Browser *StbPluginObject::browser()
-{
-    Q_D(StbPluginObject);
-    return d->browserPlugin;
+    return SDK::Browser::instance();
 }
 
 QList<WebObjectInfo> StbPluginObject::getWebObjects()
@@ -112,14 +100,14 @@ void StbPluginObject::cleanApi()
     {
         iter.next();
         DEBUG() << "Removing " << iter.key() << iter.value();
+        iter.value()->deleteLater();
         iter.remove();
     }
 }
 
-QList<StbSubmodel>& StbPluginObject::getSubmodels()
+QList<StbSubmodel>& StbPluginObject::getSubmodels() const
 {
-    Q_D(StbPluginObject);
-    return d->subModels;
+    return d_ptr->subModels;
 }
 
 StbSubmodel &StbPluginObject::findSubmodel(const QString &id)
@@ -163,16 +151,19 @@ void StbPluginObject::setSubmodelDatasourceField(const QString &group, const QSt
 
 
 StbPluginObjectPrivate::StbPluginObjectPrivate(StbPluginObject *q):
-    q_ptr(q),
-    datasourceInstance(NULL),
-    mediaPlayer(NULL),
-    guiPlugin(NULL),
-    browserPlugin(NULL)
+    q_ptr(q)
 {
 }
 
 StbPluginObjectPrivate::~StbPluginObjectPrivate()
 {
-    STUB();
-    subModels.clear();
+    STUB() << this;
+    //api.clear();
+    /*QMutableHashIterator<QString, QObject*> iter(api);
+    while(iter.hasNext())
+    {
+        iter.next();
+        DEBUG() << "Removing " << iter.key() << iter.value();
+        iter.value()->deleteLater();
+    }*/
 }

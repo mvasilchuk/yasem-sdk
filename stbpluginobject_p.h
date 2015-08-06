@@ -4,6 +4,7 @@
 #include "enums.h"
 #include "stbsubmodel.h"
 #include "webobjectinfo.h"
+#include "gui.h"
 
 #include <QString>
 #include <QList>
@@ -16,7 +17,6 @@ namespace SDK {
 class StbPluginObject;
 class DatasourcePluginObject;
 class MediaPlayer;
-class GUI;
 class Browser;
 
 class StbPluginObjectPrivate {
@@ -28,13 +28,11 @@ public:
 protected:
      StbPluginObject* q_ptr;
 public:
-
     QHash<QString, QObject*> api;
-    DatasourcePluginObject* datasourceInstance;
     MediaPlayer* mediaPlayer;
     QUrl portalUrl;
-    GUI* guiPlugin;
-    Browser* browserPlugin;
+    QSharedPointer<GUI> guiPlugin;
+    QSharedPointer<Browser> browserPlugin;
     QList<WebObjectInfo> webObjects;
     QHash<int, GUI::RcKey> keyCodeMap;
     QList<StbSubmodel> subModels;

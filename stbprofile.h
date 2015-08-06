@@ -9,6 +9,7 @@
 #include <QSize>
 #include <QJsonDocument>
 #include <QJsonArray>
+#include <QSharedPointer>
 
 static const QString CONFIG_PROFILE_NAME = "name";
 static const QString CONFIG_SUBMODEL = "submodel";
@@ -22,6 +23,7 @@ namespace SDK {
 class DatasourcePluginObject;
 class StbPluginObject;
 class WebPage;
+class Datasource;
 
 class Profile
 {
@@ -32,21 +34,20 @@ public:
         HIDDEN = 1,
     };
 
-    explicit Profile(StbPluginObject* profilePlugin, const QString &id);
+    explicit Profile(SDK::StbPluginObject* profilePlugin, const QString &id);
 
     virtual ~Profile();
 
     virtual void start() = 0;
     virtual void stop() = 0;
 
-    void setName(const QString &name);
+    void setName(const QString &m_name);
     QString getName() const;
     QString getId() const;
     void setId(const QString &id);
-    StbPluginObject* getProfilePlugin() const;
+    SDK::StbPluginObject* getProfilePlugin() const;
 
-    DatasourcePluginObject* datasource() const;
-    void datasource(DatasourcePluginObject* datasource);
+    Datasource* datasource() const;
 
     QString getImage() const;
     void setImage(const QString &path);
@@ -59,11 +60,11 @@ public:
 
     void addFlag(ProfileFlag flag);
 
-    QString get(const QString &name, const QString &defaultValue = "");
-    bool set(const QString &name, const QString &value);
+    QString get(const QString &m_name, const QString &defaultValue = "");
+    bool set(const QString &m_name, const QString &value);
 
-    int get(const QString &name, int defaultValue = 0);
-    bool set(const QString &name, int value);
+    int get(const QString &m_name, int defaultValue = 0);
+    bool set(const QString &m_name, int value);
 
     bool saveJsonConfig(const QString& jsonConfig);
 
@@ -72,21 +73,21 @@ public:
     ProfileConfiguration &config();
 
     StbSubmodel& getSubmodel();
-    void setSubmodel(const StbSubmodel& submodel);
+    void setSubmodel(const StbSubmodel& m_submodel);
 
     void setPage(WebPage* page);
     WebPage* page() const;
 
+    void clean();
 
 protected:
-    StbPluginObject* m_profile_plugin;
+    SDK::StbPluginObject* m_profile_plugin;
     QString m_id;
 
-    StbSubmodel submodel;
-    QString name;
+    StbSubmodel m_submodel;
+    QString m_name;
     ProfileFlag flags;
     QString image;
-    DatasourcePluginObject* m_datasource;
     QHash<QString, QString> userAgents;
     QHash<QString, QSize> portalResolutions;
     QHash<QString, QSize> videoResolutions;

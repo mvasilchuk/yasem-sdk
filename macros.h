@@ -4,6 +4,8 @@
 #include "core.h"
 #include "pluginmanager.h"
 
+#include <QSharedPointer>
+
 #include <QDebug>
 
 namespace yasem
@@ -100,9 +102,10 @@ void __call_method(T* obj, Fn&& fn)
 namespace SDK {
 
 template <typename T, typename R>
-T __get_plugin(R role)
+inline
+T* __get_plugin(R role)
 {
-    return dynamic_cast<T>(PluginManager::instance()->getByRole(role).data());
+    return  static_cast<T*>(PluginManager::instance()->getByRole(role));
 }
 
 }

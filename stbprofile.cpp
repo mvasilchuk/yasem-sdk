@@ -1,12 +1,12 @@
 #include "stbprofile.h"
-#include "datasourcepluginobject.h"
 #include "macros.h"
 #include "stbpluginobject.h"
+#include "datasourcefactory.h"
+#include "datasource.h"
 
 using namespace yasem::SDK;
 
-
-Profile::Profile(StbPluginObject *profilePlugin, const QString &id):
+Profile::Profile(SDK::StbPluginObject* profilePlugin, const QString &id):
     m_profile_plugin(profilePlugin),
     m_id(id)
 {
@@ -14,7 +14,7 @@ Profile::Profile(StbPluginObject *profilePlugin, const QString &id):
         this->m_id = QUuid::createUuid().toString().mid(1, 34); //Remove braces, full length is 36
     this->flags = NORMAL;
 
-    name = getId();
+    m_name = getId();
 
     ProfileConfigGroup group(QObject::tr("Main settings"));
     group.m_options.append(ConfigOption(DB_TAG_PROFILE, CONFIG_PROFILE_NAME, QObject::tr("Profile name"), QObject::tr("New profile")));
@@ -34,17 +34,16 @@ Profile::Profile(StbPluginObject *profilePlugin, const QString &id):
 
 Profile::~Profile()
 {
-    //STUB();
 }
 
 void Profile::setName(const QString &name)
 {
-    this->name = name;
+    this->m_name = name;
 }
 
 QString Profile::getName() const
 {
-    return name;
+    return m_name;
 }
 
 QString Profile::getId() const
@@ -57,19 +56,14 @@ void Profile::setId(const QString &id)
     this->m_id = id;
 }
 
-StbPluginObject *Profile::getProfilePlugin() const
+StbPluginObject* Profile::getProfilePlugin() const
 {
     return this->m_profile_plugin;
 }
 
-DatasourcePluginObject *Profile::datasource() const
+Datasource* Profile::datasource() const
 {
-    return m_datasource;
-}
-
-void Profile::datasource(DatasourcePluginObject *datasource)
-{
-    this->m_datasource = datasource;
+    return SDK::DatasourceFactory::instance()->forProfile(this);
 }
 
 QString Profile::getImage() const
@@ -128,7 +122,7 @@ bool Profile::saveJsonConfig(const QString &jsonConfig)
 
     }
 
-    setName(get("name", name));
+    setName(get("name", m_name));
 
     return true;
 }
@@ -140,20 +134,25 @@ ProfileConfiguration &Profile::config()
 
 StbSubmodel &Profile::getSubmodel()
 {
-    return submodel;
+    return m_submodel;
 }
 
 void Profile::setSubmodel(const StbSubmodel &submodel)
 {
-    this->submodel = submodel;
+    this->m_submodel = submodel;
 }
 
-void Profile::setPage(WebPage *page)
+void Profile::setPage(WebPage* page)
 {
     this->m_page = page;
 }
 
-WebPage *Profile::page() const
+WebPage* Profile::page() const
 {
     return m_page;
+}
+
+void Profile::clean()
+{
+
 }

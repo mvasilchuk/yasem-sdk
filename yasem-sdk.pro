@@ -21,7 +21,11 @@ SOURCES += \
     plugindependency.cpp \
     pluginmanager.cpp \
     browser.cpp \
-    abstractpluginobject.cpp
+    abstractpluginobject.cpp \
+    profilemanager.cpp \
+    datasourcefactory.cpp \
+    datasource.cpp \
+    datasourceclass.cpp
 
 HEADERS += \
     plugin.h \
@@ -46,7 +50,10 @@ HEADERS += \
     browser.h \
     webpage.h \
     gui.h \
-    yasemsettings.h
+    yasemsettings.h \
+    datasourcefactory.h \
+    datasource.h \
+    datasourceclass.h
 
 # Plugin headers
 
@@ -59,8 +66,6 @@ SOURCES += \
 
 HEADERS += \
     abstractpluginobject.h \
-    datasourceplugin.h \
-    datasourcepluginobject.h \
     abstracthttpproxy.h \
     abstracthttpproxy_p.h \
     webserverplugin.h \

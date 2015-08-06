@@ -25,18 +25,18 @@ public:
         TypeMouse = 2
     };
 
-    int keyCode;
-    int which;
-    int keyCode2;
-    int which2;
-    bool alt;
-    bool ctrl;
-    bool shift;
+    int m_key_code;
+    int m_which;
+    int m_key_code2;
+    int m_which_2;
+    bool m_alt;
+    bool m_ctrl;
+    bool m_shift;
 
     virtual QString toString() = 0;
 
 protected:
-    virtual void init(int keyCode, int which, int keyCode2, int which2, bool alt = false, bool ctrl = false, bool shift = false) = 0;
+    virtual void init(int m_key_code, int m_which, int m_key_code2, int m_which_2, bool m_alt = false, bool m_ctrl = false, bool m_shift = false) = 0;
 
 };
 

@@ -7,8 +7,13 @@ using namespace yasem::SDK;
 
 MediaPlayer::MediaPlayer(Plugin *plugin):
     AbstractPluginObject(plugin),
+    m_is_fullscreen(false),
+    m_opacity(1),
     m_virtual_viewport(QRect(0, 0, 1920, 1080)),
+    m_vp_scale_x(1),
+    m_vp_scale_y(1),
     m_support_opengl(false)
+
 {
     reset();
 }
@@ -18,9 +23,9 @@ MediaPlayer::~MediaPlayer()
 
 }
 
-MediaPlayer *MediaPlayer::instance()
+MediaPlayer* MediaPlayer::instance()
 {
-    return __get_plugin<MediaPlayer*>(ROLE_MEDIA);
+    return __get_plugin<MediaPlayer>(ROLE_MEDIA);
 }
 
 qreal MediaPlayer::getOpacity() const
@@ -167,7 +172,7 @@ bool MediaPlayer::isFullscreen() const {
 }
 
 void MediaPlayer::resize() {
-    Browser* browser = __get_plugin<Browser*>(ROLE_BROWSER);
+    Browser* browser = __get_plugin<Browser>(ROLE_BROWSER);
     if(browser)
     {
         WebPage* page = browser->getActiveWebPage();

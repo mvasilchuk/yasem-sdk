@@ -17,7 +17,7 @@ class QWidget;
 namespace yasem {
 namespace SDK {
 
-class DatasourcePlugin;
+class Datasource;
 class Browser;
 class BaseWidget;
 class MediaPlayer;
@@ -43,10 +43,7 @@ public:
 public slots:
     virtual PluginObjectResult init();
 
-    virtual void player(MediaPlayer* player);
     virtual MediaPlayer* player();
-
-    virtual void browser(Browser* browser);
     virtual Browser* browser();
 
     virtual QList<WebObjectInfo> getWebObjects();
@@ -61,7 +58,7 @@ public slots:
     virtual QHash<QString, QObject*>& getApi();
     virtual void cleanApi();
 
-    virtual QList<StbSubmodel>& getSubmodels();
+    virtual QList<StbSubmodel>& getSubmodels() const;
 
     virtual StbSubmodel& findSubmodel(const QString &id);
     virtual QString listSubmodels();
@@ -70,7 +67,7 @@ public slots:
     virtual QString getSubmodelDatasourceField();
 
     virtual QString getProfileClassId() = 0;
-    virtual Profile* createProfile(const QString& id = "") = 0;
+    virtual SDK::Profile* createProfile(const QString& id = "") = 0;
     virtual void initObject(WebPage* page) = 0;
     virtual QString getIcon(const QSize &size = QSize()) = 0;
 

@@ -7,10 +7,9 @@ using namespace yasem;
 using namespace yasem::SDK;
 
 
-GUI *GUI::instance()
+GUI* GUI::instance()
 {
-    GUI* gui = __get_plugin<GUI*>(ROLE_GUI);
-    Q_ASSERT(gui);
+    GUI* gui = __get_plugin<GUI>(ROLE_GUI);
     return gui;
 }
 

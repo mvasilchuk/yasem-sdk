@@ -86,7 +86,7 @@ public:
      */
     Q_INVOKABLE virtual bool has_role(PluginRole role);
 
-    Q_INVOKABLE virtual QHash<PluginRole, QSharedPointer<AbstractPluginObject>> roles();
+    Q_INVOKABLE virtual QHash<PluginRole, AbstractPluginObject*> roles();
 
     Q_INVOKABLE virtual QList<PluginDependency> dependencies();
 
@@ -127,7 +127,6 @@ public:
     Q_INVOKABLE virtual bool isMultithreadingEnabled();
 
     void register_role(PluginRole role, AbstractPluginObject *obj);
-    void register_role(PluginRole role, QSharedPointer<AbstractPluginObject> obj);
 signals:
     void loaded();
     void unloaded();

@@ -2,6 +2,7 @@
 #define ABSTRACTPLUGINOBJECT
 
 #include <QObject>
+#include <QSharedPointer>
 
 namespace yasem {
 namespace SDK {
@@ -26,9 +27,9 @@ public:
 
     void setInitialized(bool value);
 
-    bool isInitialized();
+    bool isInitialized() const;
 
-    Plugin* plugin();
+    Plugin* plugin() const;
 
 protected:
     Plugin* m_plugin;

@@ -44,7 +44,7 @@ public:
     virtual PluginErrorCodes deinitPlugins() = 0;
     //virtual PLUGIN_ERROR_CODES connectSlots();
     virtual QList<QSharedPointer<Plugin>> getPlugins(PluginRole role, bool active_only) = 0;
-    virtual QSharedPointer<AbstractPluginObject> getByRole(PluginRole role, bool show_warning = true) const = 0;
+    virtual AbstractPluginObject* getByRole(PluginRole role, bool show_warning = true) const = 0;
     virtual QSharedPointer<Plugin> getByIID(const QString &iid) = 0;
     virtual void setPluginDir(const QString &pluginDir) = 0;
     virtual QString getPluginDir() = 0;
@@ -53,14 +53,9 @@ public:
 protected:
     PluginManager(QObject* parent);
     virtual ~PluginManager();
-    QList<QSharedPointer<Plugin>> m_plugins;
-    QHash<PluginRole, QList<QSharedPointer<AbstractPluginObject>>> m_plugin_objects;
+
     virtual PluginFlag parseFlags(const QString &flagsStr) = 0;
-    QString m_plugin_dir;
-
     virtual void registerPluginRole(const PluginRole& role, const PluginRoleData& data) = 0;
-
-    QHash<PluginRole, PluginRoleData> m_plugin_roles;
 
 private:
 

@@ -17,6 +17,11 @@ Browser::~Browser()
     STUB();
 }
 
+Browser *Browser::instance()
+{
+    return __get_plugin<Browser>(ROLE_BROWSER);
+}
+
 QString Browser::getQmlComponentName()
 {
     return "";
