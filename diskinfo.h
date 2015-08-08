@@ -20,6 +20,7 @@ public:
     QString model;
     QString vendor;
     bool writable = true;
+    QString m_file_system;
 
     QString toString();
 
@@ -55,15 +56,11 @@ class BlockDeviceInfo: public QObject
 {
     Q_OBJECT
 public:
-    BlockDeviceInfo(QObject* parent = 0): QObject(parent) {
-        index = -1;
-        conn_interface = ConnectionInterface::NONE;
-        hardware_type = DEVICE_TYPE_UNKNOWN;
-    }
-    virtual ~BlockDeviceInfo(){};
-    int index;
-    ConnectionInterface conn_interface;
-    BlockDeviceType hardware_type;
+    BlockDeviceInfo(QObject* parent = 0);
+    virtual ~BlockDeviceInfo();
+    int m_index;
+    ConnectionInterface m_conn_interface;
+    BlockDeviceType m_hardware_type;
     QString unique_id;
     QString parent_id;
     QString sys_fs_id;
@@ -74,18 +71,7 @@ public:
     QStringList drivers;
     QString device_file;
 
-    QString toString() {
-        return QString("block device: [%1, %2, %3, %4, %5, %6, %7, %8, %9]")
-                .arg(QString::number(index))
-                .arg(unique_id)
-                .arg(parent_id)
-                .arg(sys_fs_id)
-                .arg(model)
-                .arg(vendor)
-                .arg(device)
-                .arg(revision)
-                .arg(device_file);
-    }
+    QString toString();
 
     QList<BlockDeviceInfo*> children;
 };
