@@ -44,7 +44,7 @@ public:
     virtual PluginErrorCodes deinitPlugins() = 0;
     //virtual PLUGIN_ERROR_CODES connectSlots();
     virtual QList<QSharedPointer<Plugin>> getPlugins(PluginRole role, bool active_only) = 0;
-    virtual AbstractPluginObject* getByRole(PluginRole role, bool show_warning = true) const = 0;
+    virtual AbstractPluginObject* getByRole(PluginRole role, bool show_warning = true) = 0;
     virtual QSharedPointer<Plugin> getByIID(const QString &iid) = 0;
     virtual void setPluginDir(const QString &pluginDir) = 0;
     virtual QString getPluginDir() = 0;
