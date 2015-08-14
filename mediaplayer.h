@@ -121,7 +121,7 @@ public:
     virtual bool state(MediaPlayingState state) = 0;
 
     virtual void setAspectRatio(AspectRatio mode) = 0;
-    virtual AspectRatio getAspectRatio() = 0;
+    virtual AspectRatio getAspectRatio() const = 0;
 
     virtual void move(int x, int y) = 0;    
 

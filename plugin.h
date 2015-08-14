@@ -86,43 +86,43 @@ public:
      */
     Q_INVOKABLE virtual bool has_role(PluginRole role);
 
-    Q_INVOKABLE virtual QHash<PluginRole, AbstractPluginObject*> roles();
+    Q_INVOKABLE virtual QHash<PluginRole, AbstractPluginObject*> roles() const;
 
-    Q_INVOKABLE virtual QList<PluginDependency> dependencies();
+    Q_INVOKABLE virtual QList<PluginDependency> dependencies() const;
 
-    Q_INVOKABLE virtual QString getIID();
+    Q_INVOKABLE virtual QString getIID() const;
     Q_INVOKABLE virtual void setIID(const QString &iid);
 
-    Q_INVOKABLE virtual QString getClassName();
+    Q_INVOKABLE virtual QString getClassName() const;
     Q_INVOKABLE virtual void setClassName(const QString &className);
 
-    Q_INVOKABLE virtual QString getId();
+    Q_INVOKABLE virtual QString getId() const;
     Q_INVOKABLE virtual void setId(const QString &id);
 
     Q_INVOKABLE virtual QString getVersion() const;
     Q_INVOKABLE virtual QString getRevision() const;
 
-    Q_INVOKABLE virtual QString getName();
+    Q_INVOKABLE virtual QString getName() const;
     Q_INVOKABLE virtual void setName(const QString &name);
 
-    Q_INVOKABLE virtual QJsonObject getMetadata();
+    Q_INVOKABLE virtual QJsonObject getMetadata() const;
     Q_INVOKABLE virtual void setMetadata(const QJsonObject &metadata);
 
-    Q_INVOKABLE virtual PluginFlag getFlags();
+    Q_INVOKABLE virtual PluginFlag getFlags() const;
     Q_INVOKABLE virtual void setFlags(const PluginFlag &flags);
 
-    Q_INVOKABLE virtual PluginState getState();
+    Q_INVOKABLE virtual PluginState getState() const;
     Q_INVOKABLE virtual void setState(const PluginState &state);
 
-    Q_INVOKABLE virtual QString getStateDescription();
+    Q_INVOKABLE virtual QString getStateDescription() const;
 
-    Q_INVOKABLE virtual bool isActive();
+    Q_INVOKABLE virtual bool isActive() const;
     Q_INVOKABLE virtual void setActive(bool active);
 
-    Q_INVOKABLE virtual QList<QSharedPointer<Plugin>> getRuntimeConflicts();
+    Q_INVOKABLE virtual QList<QSharedPointer<Plugin>> getRuntimeConflicts() const;
     Q_INVOKABLE virtual void addRuntimeConflict(QSharedPointer<Plugin> plugin);
 
-    Q_INVOKABLE virtual QList<PluginConflict> getStaticConflicts();
+    Q_INVOKABLE virtual QList<PluginConflict> getStaticConflicts() const;
 
     Q_INVOKABLE virtual bool isMultithreadingEnabled();
 

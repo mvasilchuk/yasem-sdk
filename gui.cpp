@@ -15,14 +15,14 @@ GUI* GUI::instance()
 
 QString GUI::getRcKeyName(GUI::RcKey key) const
 {
-    int index = metaObject()->indexOfEnumerator("RcKey");
-    QMetaEnum metaEnum = metaObject()->enumerator(index);
+    const int index = metaObject()->indexOfEnumerator("RcKey");
+    const QMetaEnum metaEnum = metaObject()->enumerator(index);
     return metaEnum.valueToKey(key);
 }
 
 GUI::RcKey GUI::getRcKeyByName(const QString &name) const
 {
-    int index = metaObject()->indexOfEnumerator("RcKey");
-    QMetaEnum metaEnum = metaObject()->enumerator(index);
+    const int index = metaObject()->indexOfEnumerator("RcKey");
+    const QMetaEnum metaEnum = metaObject()->enumerator(index);
     return (RcKey)metaEnum.keyToValue(name.toUtf8().constData());
 }

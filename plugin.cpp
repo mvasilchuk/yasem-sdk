@@ -58,22 +58,19 @@ bool Plugin::has_role(PluginRole role)
     return d->m_role_list.contains(role);
 }
 
-QHash<PluginRole, AbstractPluginObject*> Plugin::roles()
+QHash<PluginRole, AbstractPluginObject*> Plugin::roles() const
 {
-    Q_D(Plugin);
-    return d->m_role_list;
+    return d_ptr->m_role_list;
 }
 
-QList<PluginDependency> Plugin::dependencies()
+QList<PluginDependency> Plugin::dependencies() const
 {
-    Q_D(Plugin);
-    return d->m_dependency_list;
+    return d_ptr->m_dependency_list;
 }
 
-QString Plugin::getIID()
+QString Plugin::getIID() const
 {
-    Q_D(Plugin);
-    return d->m_IID;
+    return d_ptr->m_IID;
 }
 
 void Plugin::setIID(const QString &iid)
@@ -82,10 +79,9 @@ void Plugin::setIID(const QString &iid)
     d->m_IID = iid;
 }
 
-QString Plugin::getClassName()
+QString Plugin::getClassName() const
 {
-    Q_D(Plugin);
-    return d->m_className;
+    return d_ptr->m_className;
 }
 
 void Plugin::setClassName(const QString &className)
@@ -94,10 +90,9 @@ void Plugin::setClassName(const QString &className)
     d->m_className = className;
 }
 
-QString Plugin::getId()
+QString Plugin::getId() const
 {
-    Q_D(Plugin);
-    return d->m_id;
+    return d_ptr->m_id;
 }
 
 void Plugin::setId(const QString &id)
@@ -116,10 +111,9 @@ QString Plugin::getRevision() const
     return metaObject()->classInfo(metaObject()->indexOfClassInfo("revision")).value();
 }
 
-QString Plugin::getName()
+QString Plugin::getName() const
 {
-    Q_D(Plugin);
-    return d->m_name;
+    return d_ptr->m_name;
 }
 
 void Plugin::setName(const QString &name)
@@ -128,10 +122,9 @@ void Plugin::setName(const QString &name)
     d->m_name = name;
 }
 
-QJsonObject Plugin::getMetadata()
+QJsonObject Plugin::getMetadata() const
 {
-    Q_D(Plugin);
-    return d->m_metadata;
+    return d_ptr->m_metadata;
 }
 
 void Plugin::setMetadata(const QJsonObject &metadata)
@@ -140,10 +133,9 @@ void Plugin::setMetadata(const QJsonObject &metadata)
     d->m_metadata = metadata;
 }
 
-PluginFlag Plugin::getFlags()
+PluginFlag Plugin::getFlags() const
 {
-    Q_D(Plugin);
-    return d->m_flags;
+    return d_ptr->m_flags;
 }
 
 void Plugin::setFlags(const PluginFlag &flags)
@@ -152,10 +144,9 @@ void Plugin::setFlags(const PluginFlag &flags)
     d->m_flags = flags;
 }
 
-PluginState Plugin::getState()
+PluginState Plugin::getState() const
 {
-    Q_D(Plugin);
-    return d->m_state;
+    return d_ptr->m_state;
 }
 
 void Plugin::setState(const PluginState &state)
@@ -181,10 +172,11 @@ void Plugin::setState(const PluginState &state)
     }
 }
 
-QString Plugin::getStateDescription()
+QString Plugin::getStateDescription() const
 {
     QString result;
-    switch(getState())
+    const PluginState state = getState();
+    switch(state)
     {
         case PLUGIN_STATE_UNKNOWN:                  { result = "Unknown"; break; }
         case PLUGIN_STATE_ERROR_STATE:              { result = "Error"; break; }
@@ -195,15 +187,14 @@ QString Plugin::getStateDescription()
         case PLUGIN_STATE_CONFLICT:                 { result = "Conflict"; break; }
         case PLUGIN_STATE_DISABLED_BY_DEPENDENCY:   { result = "Disabled by dep."; break; }
         case PLUGIN_STATE_THREAD_STARTED:           { result = "Thread started."; break; }
-        default:                                    { result = QString::number(getState()); break; }
+        default:                                    { result = QString::number(state); break; }
     }
     return result;
 }
 
-bool Plugin::isActive()
+bool Plugin::isActive() const
 {
-    Q_D(Plugin);
-    return d->m_active;
+    return d_ptr->m_active;
 }
 
 void Plugin::setActive(bool active)
@@ -212,10 +203,9 @@ void Plugin::setActive(bool active)
     d->m_active = active;
 }
 
-QList<QSharedPointer<Plugin>> Plugin::getRuntimeConflicts()
+QList<QSharedPointer<Plugin>> Plugin::getRuntimeConflicts() const
 {
-    Q_D(Plugin);
-    return d->m_runtime_conflicts;
+    return d_ptr->m_runtime_conflicts;
 }
 
 void Plugin::addRuntimeConflict(QSharedPointer<Plugin> plugin)
@@ -224,10 +214,9 @@ void Plugin::addRuntimeConflict(QSharedPointer<Plugin> plugin)
     d->m_runtime_conflicts.append(plugin);
 }
 
-QList<PluginConflict> Plugin::getStaticConflicts()
+QList<PluginConflict> Plugin::getStaticConflicts() const
 {
-    Q_D(Plugin);
-    return d->m_static_conflicts;
+    return d_ptr->m_static_conflicts;
 }
 
 bool Plugin::isMultithreadingEnabled()

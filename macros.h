@@ -105,7 +105,7 @@ template <typename T, typename R>
 inline
 T* __get_plugin(R role)
 {
-    return  static_cast<T*>(PluginManager::instance()->getByRole(role));
+    return static_cast<T*>(PluginManager::instance()->getByRole(role));
 }
 
 }
