@@ -64,6 +64,13 @@ private:
     // your singleton appearing.
     PluginManager(PluginManager const&);              // Don't Implement
     void operator=(PluginManager const&); // Don't implement
+
+public:
+    template <class T>
+    static T* getByRole(PluginRole role, bool show_warning = true)
+    {
+        return static_cast<T*>(instance()->getByRole(role, show_warning));
+    }
 };
 
 }

@@ -34,16 +34,6 @@ PluginObjectResult StbPluginObject::init()
     return PLUGIN_OBJECT_RESULT_OK;
 }
 
-MediaPlayer* StbPluginObject::player()
-{
-    return SDK::MediaPlayer::instance();
-}
-
-Browser* StbPluginObject::browser()
-{
-    return SDK::Browser::instance();
-}
-
 QList<WebObjectInfo> StbPluginObject::getWebObjects()
 {
     Q_D(StbPluginObject);

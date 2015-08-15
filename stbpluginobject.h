@@ -43,9 +43,6 @@ public:
 public slots:
     virtual PluginObjectResult init();
 
-    virtual MediaPlayer* player();
-    virtual Browser* browser();
-
     virtual QList<WebObjectInfo> getWebObjects();
     virtual QHash<int, GUI::RcKey> getKeyCodeMap();
 

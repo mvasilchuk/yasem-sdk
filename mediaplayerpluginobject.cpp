@@ -13,7 +13,6 @@ MediaPlayer::MediaPlayer(Plugin *plugin):
     m_vp_scale_x(1),
     m_vp_scale_y(1),
     m_support_opengl(false)
-
 {
     reset();
 }
@@ -25,7 +24,12 @@ MediaPlayer::~MediaPlayer()
 
 MediaPlayer* MediaPlayer::instance()
 {
-    return __get_plugin<MediaPlayer>(ROLE_MEDIA);
+    static MediaPlayer* inst = 0;
+    if(!inst)
+        inst = PluginManager::getByRole<SDK::MediaPlayer>(ROLE_MEDIA);
+    if(!inst)
+        WARN() << "Media player not found!";
+    return inst;
 }
 
 qreal MediaPlayer::getOpacity() const
@@ -172,7 +176,7 @@ bool MediaPlayer::isFullscreen() const {
 }
 
 void MediaPlayer::resize() {
-    Browser* browser = __get_plugin<Browser>(ROLE_BROWSER);
+    Browser* browser = SDK::Browser::instance();
     if(browser)
     {
         WebPage* page = browser->getActiveWebPage();

@@ -9,8 +9,12 @@ using namespace yasem::SDK;
 
 GUI* GUI::instance()
 {
-    GUI* gui = __get_plugin<GUI>(ROLE_GUI);
-    return gui;
+    static GUI* inst = 0;
+    if(!inst)
+        inst = PluginManager::getByRole<SDK::GUI>(ROLE_GUI);
+    if(!inst)
+        WARN() << "GUI not found!";
+    return inst;
 }
 
 QString GUI::getRcKeyName(GUI::RcKey key) const

@@ -79,9 +79,6 @@ public:
     static MediaPlayer* instance();
 
     virtual void parent(QWidget* parent) = 0;
-    virtual QWidget* parent() = 0;
-
-    virtual void widget(QWidget* videoWidget) = 0;
     virtual QWidget* widget() const = 0;
 
     virtual bool mediaPlay(const QString &url) = 0;

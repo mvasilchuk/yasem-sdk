@@ -99,16 +99,6 @@ void __call_method(T* obj, Fn&& fn)
 #define CHECK_OR_RETURN_VOID(object) \
     do { if(!object) { WARN_NULL_OBJECT(object); return; } } while(0)
 
-namespace SDK {
-
-template <typename T, typename R>
-inline
-T* __get_plugin(R role)
-{
-    return static_cast<T*>(PluginManager::instance()->getByRole(role));
-}
-
-}
 
 }
 

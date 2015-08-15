@@ -19,7 +19,12 @@ Browser::~Browser()
 
 Browser *Browser::instance()
 {
-    return __get_plugin<Browser>(ROLE_BROWSER);
+    static Browser* inst = 0;
+    if(!inst)
+        inst = PluginManager::getByRole<SDK::Browser>(ROLE_BROWSER);
+    if(!inst)
+        WARN() << "Browser not found!";
+    return inst;
 }
 
 QString Browser::getQmlComponentName()
