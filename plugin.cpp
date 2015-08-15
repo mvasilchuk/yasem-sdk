@@ -252,11 +252,5 @@ void Plugin::setMultithreading(bool enable)
 PluginPrivate::~PluginPrivate()
 {
     STUB() << this;
-    /*QMutableHashIterator<PluginRole, QSharedPointer<AbstractPluginObject>> iter(m_role_list);
-    while(iter.hasNext())
-    {
-        iter.next();
-
-        iter.
-    }*/
+    qDeleteAll(m_role_list);
 }
