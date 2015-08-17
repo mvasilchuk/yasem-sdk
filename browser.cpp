@@ -52,3 +52,8 @@ Browser::TopWidget Browser::getTopWidget()
 {
     return m_top_widget;
 }
+
+void Browser::showDeveloperTools()
+{
+    DEBUG() << "Developer tools are not supported by this browser!";
+}

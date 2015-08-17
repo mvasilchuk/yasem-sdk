@@ -25,7 +25,8 @@ SOURCES += \
     profilemanager.cpp \
     datasourcefactory.cpp \
     datasource.cpp \
-    datasourceclass.cpp
+    datasourceclass.cpp \
+    webpage.cpp
 
 HEADERS += \
     plugin.h \

@@ -83,6 +83,9 @@ public:
     virtual void setTopWidget(TopWidget top);
     virtual TopWidget getTopWidget();
 
+public slots:
+    virtual void showDeveloperTools();
+
 protected:
     QWidget* activeWebView;
     bool m_use_qml;
