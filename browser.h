@@ -91,7 +91,7 @@ protected:
     bool m_use_qml;
     TopWidget m_top_widget;
 
-Q_SIGNALS:
+signals:
     void topWidgetChanged();
 
     void page_loading_started(const QString& url);
