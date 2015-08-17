@@ -252,5 +252,4 @@ void Plugin::setMultithreading(bool enable)
 PluginPrivate::~PluginPrivate()
 {
     STUB() << this;
-    qDeleteAll(m_role_list);
 }

@@ -17,6 +17,7 @@ StbPluginObject::StbPluginObject(Plugin* plugin):
 
 StbPluginObject::~StbPluginObject()
 {
+    cleanApi();
     STUB() << this;
     if(d_ptr)
         delete d_ptr;
@@ -84,13 +85,12 @@ QHash<QString, QObject*> &StbPluginObject::getApi()
 
 void StbPluginObject::cleanApi()
 {
-    Q_D(StbPluginObject);
-    QMutableHashIterator<QString, QObject*> iter(d->api);
+    QMutableHashIterator<QString, QObject*> iter(d_ptr->api);
     while(iter.hasNext())
     {
         iter.next();
-        DEBUG() << "Removing " << iter.key() << iter.value();
-        iter.value()->deleteLater();
+        if(iter.value())
+            delete iter.value();
         iter.remove();
     }
 }

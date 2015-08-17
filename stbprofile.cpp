@@ -36,6 +36,12 @@ Profile::~Profile()
 {
 }
 
+void Profile::cleanApi()
+{
+    DEBUG() << "Cleaning a list of API of the profile";
+    getProfilePlugin()->cleanApi();
+}
+
 void Profile::setName(const QString &name)
 {
     this->m_name = name;
@@ -150,9 +156,4 @@ void Profile::setPage(WebPage* page)
 WebPage* Profile::page() const
 {
     return m_page;
-}
-
-void Profile::clean()
-{
-
 }

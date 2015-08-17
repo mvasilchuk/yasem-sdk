@@ -9,3 +9,8 @@ Datasource::Datasource(QObject *parent):
 {
 
 }
+
+Datasource::~Datasource()
+{
+
+}

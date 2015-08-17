@@ -11,6 +11,7 @@ class Datasource: public QObject
     Q_OBJECT
 public:
     Datasource(QObject* parent);
+    virtual ~Datasource();
 
     virtual int get(const QString &tag, const QString &name, const int defaultValue)  = 0;
     virtual QString get(const QString &tag, const QString &name, const QString &defaultValue = "")  = 0;

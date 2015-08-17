@@ -6,7 +6,8 @@ using namespace SDK;
 
 
 ProfileManager::ProfileManager(QObject *parent):
-    QObject(parent)
+    QObject(parent),
+    m_active_profile(NULL)
 {
 
 }

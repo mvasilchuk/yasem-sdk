@@ -40,6 +40,7 @@ public:
 
     virtual void start() = 0;
     virtual void stop() = 0;
+    void cleanApi();
 
     void setName(const QString &m_name);
     QString getName() const;
@@ -77,8 +78,6 @@ public:
 
     void setPage(WebPage* page);
     WebPage* page() const;
-
-    void clean();
 
 protected:
     SDK::StbPluginObject* m_profile_plugin;
