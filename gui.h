@@ -7,6 +7,7 @@
 #include <QRect>
 
 class QMenu;
+class QMainWindow;
 
 namespace yasem {
 namespace SDK {
@@ -101,6 +102,8 @@ public:
 
     QString getRcKeyName(RcKey key) const;
     RcKey getRcKeyByName(const QString &name) const;
+
+    virtual QMainWindow* window() = 0;
 
 signals:
     void windowRectChanged(const QRect& rect);

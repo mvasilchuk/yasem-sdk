@@ -146,7 +146,12 @@ public:*/
         ROLE_DATASOURCE = 7,
         ROLE_WEB_SERVER = 8,
         ROLE_WEB_GUI = 9,
-        ROLE_HTTP_PROXY = 10
+        ROLE_HTTP_PROXY = 10,
+        /**
+          Plugins that do some integration into environment (i.e. Windows, Linux,
+          OS X or KDE, Gnome, etc)
+          */
+        ROLE_ENV_INTEGRATION = 11
     };
 
     enum PluginConflictType {
