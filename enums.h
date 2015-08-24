@@ -151,7 +151,8 @@ public:*/
           Plugins that do some integration into environment (i.e. Windows, Linux,
           OS X or KDE, Gnome, etc)
           */
-        ROLE_ENV_INTEGRATION = 11
+        ROLE_ENV_INTEGRATION = 11,
+        ROLE_TIMESHIFT = 12
     };
 
     enum PluginConflictType {

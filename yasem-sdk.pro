@@ -26,7 +26,8 @@ SOURCES += \
     datasourcefactory.cpp \
     datasource.cpp \
     datasourceclass.cpp \
-    webpage.cpp
+    webpage.cpp \
+    timeshift.cpp
 
 HEADERS += \
     plugin.h \
@@ -54,7 +55,8 @@ HEADERS += \
     yasemsettings.h \
     datasourcefactory.h \
     datasource.h \
-    datasourceclass.h
+    datasourceclass.h \
+    timeshift.h
 
 # Plugin headers
 

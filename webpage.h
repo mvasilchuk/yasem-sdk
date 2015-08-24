@@ -34,7 +34,11 @@ public slots:
 
     virtual void reset() = 0;
     virtual void execKeyEvent(const QString &action, int code, Qt::KeyboardModifiers mods, const QString &symbol) = 0;
-    virtual QWidget* widget() = 0;
+    virtual QWidget* widget() const = 0;
+
+    virtual QString getTitle() const = 0;
+    virtual QUrl getURL() const = 0;
+    virtual QString getRootDir() const = 0;
 };
 }
 

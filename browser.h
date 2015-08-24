@@ -58,8 +58,10 @@ public:
     virtual void fullscreen(bool setFullscreen) = 0;
     virtual bool fullscreen() = 0;
 
-    virtual QUrl url() = 0;
-    virtual QString browserRootDir() = 0;
+    virtual QUrl url() const = 0;
+
+    Q_DECL_DEPRECATED
+    virtual QString browserRootDir() const = 0;
     virtual void setUserAgent(const QString &userAgent) = 0;
     virtual void addFont(const QString &fileName) = 0;
     virtual void registerKeyEvent(GUI::RcKey rc_key, int keyCode) = 0;
