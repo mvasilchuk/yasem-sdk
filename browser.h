@@ -76,7 +76,7 @@ public:
 
     virtual QString getQmlComponentName();
 
-    virtual SDK::WebPage* createNewPage(bool child = false) = 0;
+    virtual SDK::WebPage* createNewPage(bool child = false, bool visible = true) = 0;
     virtual WebPage* getActiveWebPage() = 0;
 
     virtual void setUseQml(bool use);

@@ -14,6 +14,9 @@ namespace SDK {
 
 class WebPage {
 public slots:
+
+    virtual ~WebPage();
+
     virtual bool load(const QUrl &url) = 0;
     virtual bool openWindow(const QString &url, const QString &params, const QString &name) = 0;
     virtual void close() = 0;
@@ -39,6 +42,13 @@ public slots:
     virtual QString getTitle() const = 0;
     virtual QUrl getURL() const = 0;
     virtual QString getRootDir() const = 0;
+
+    virtual void move(int x, int y) = 0;
+    virtual void resize(int width, int height) = 0;
+    virtual void show() = 0;
+    virtual void hide() = 0;
+    virtual void raise() = 0;
+    virtual void setStyleSheet(const QString& stylesheet) = 0;
 };
 }
 

@@ -4,3 +4,8 @@
 using namespace yasem;
 using namespace SDK;
 
+
+WebPage::~WebPage()
+{
+
+}
