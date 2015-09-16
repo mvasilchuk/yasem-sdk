@@ -53,6 +53,14 @@ Browser::TopWidget Browser::getTopWidget()
     return m_top_widget;
 }
 
+QString Browser::nextPageId()
+{
+    static int m_next_page_id = -1;
+
+    m_next_page_id++;
+    return QString(m_next_page_id);
+}
+
 void Browser::showDeveloperTools()
 {
     DEBUG() << "Developer tools are not supported by this browser!";

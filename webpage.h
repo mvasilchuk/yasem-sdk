@@ -12,9 +12,14 @@ class QWidget;
 namespace yasem {
 namespace SDK {
 
+class WebPagePrivate;
+
+
 class WebPage {
+    Q_DECLARE_PRIVATE(WebPage)
 public slots:
 
+    explicit WebPage();
     virtual ~WebPage();
 
     virtual bool load(const QUrl &url) = 0;
@@ -49,6 +54,16 @@ public slots:
     virtual void hide() = 0;
     virtual void raise() = 0;
     virtual void setStyleSheet(const QString& stylesheet) = 0;
+
+    virtual void setId(const QString& id);
+    virtual QString getId() const;
+
+protected:
+protected:
+    WebPage(WebPagePrivate &d): d_ptr(&d) {}
+    // allow subclasses to initialize with their own concrete Private
+    WebPagePrivate *d_ptr;
+
 };
 }
 

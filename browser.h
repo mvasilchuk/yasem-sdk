@@ -85,6 +85,10 @@ public:
     virtual void setTopWidget(TopWidget top);
     virtual TopWidget getTopWidget();
 
+    virtual QHash<QString, WebPage*> pages() const  = 0;
+
+    static QString nextPageId();
+
 public slots:
     virtual void showDeveloperTools();
 
