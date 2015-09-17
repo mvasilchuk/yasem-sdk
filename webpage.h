@@ -16,7 +16,6 @@ class WebPagePrivate;
 
 
 class WebPage {
-    Q_DECLARE_PRIVATE(WebPage)
 public slots:
 
     explicit WebPage();
@@ -55,11 +54,11 @@ public slots:
     virtual void raise() = 0;
     virtual void setStyleSheet(const QString& stylesheet) = 0;
 
-    virtual void setId(const QString& id);
-    virtual QString getId() const;
+    virtual void setId(const int id);
+    virtual int getId() const;
 
 protected:
-protected:
+private:
     WebPage(WebPagePrivate &d): d_ptr(&d) {}
     // allow subclasses to initialize with their own concrete Private
     WebPagePrivate *d_ptr;

@@ -49,7 +49,7 @@ void MediaPlayer::reset()
 
 void MediaPlayer::setViewport(const QRect &requestedRect)
 {
-    DEBUG() << "setViewport" << requestedRect << isFullscreen();
+    DEBUG() << "MediaPlayer::setViewport" << requestedRect << isFullscreen();
     m_player_viewport = requestedRect;
     recalculateViewportScale();
     resize();
@@ -63,7 +63,7 @@ void MediaPlayer::setViewport(const QRect &containerRect, const qreal containerS
 #define USE_RELATIVE_RECT
 #endif //USE_REAL_TRANSPARENCY
 
-    DEBUG() << "setViewport" << containerRect << containerScale << requestedRect << isFullscreen();
+    DEBUG() << "MediaPlayer::setViewport" << containerRect << containerScale << requestedRect << isFullscreen();
     if(requestedRect.width() >= 0 && requestedRect.height() >= 0)
     {
         if(isFullscreen())
@@ -114,7 +114,7 @@ void MediaPlayer::setViewport(const QRect &containerRect, const qreal containerS
             rect(zoomedRect);
 
         }
-        widget()->repaint();
+        widget()->update();
     }
 
     else
@@ -169,6 +169,12 @@ void MediaPlayer::recalculateViewportScale()
 
 void MediaPlayer::setFullscreen(bool value) {
     this->m_is_fullscreen = value;
+    if(value)
+    {
+        SDK::Browser* browser = SDK::Browser::instance();
+        if(browser)
+        m_player_viewport = browser->getMainWebPage()->getPageRect();
+    }
 }
 
 bool MediaPlayer::isFullscreen() const {
@@ -179,7 +185,7 @@ void MediaPlayer::resize() {
     Browser* browser = SDK::Browser::instance();
     if(browser)
     {
-        WebPage* page = browser->getActiveWebPage();
+        WebPage* page = browser->getMainWebPage();
         if(page)
         {
             QRect rect = page->getPageRect();

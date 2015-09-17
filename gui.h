@@ -20,6 +20,11 @@ public:
     Q_PROPERTY(bool fullscreen READ getFullscreen WRITE setFullscreen)
     Q_PROPERTY(QRect rect READ getWindowRect WRITE setWindowRect)
 
+    enum TopWidget {
+        TOP_WIDGET_BROWSER,
+        TOP_WIDGET_PLAYER
+    };
+
     enum RcKey {
         RC_KEY_NO_KEY = 0,
         RC_KEY_OK = 1,
@@ -105,7 +110,17 @@ public:
 
     virtual QMainWindow* window() = 0;
 
+    void setTopWidget(TopWidget top);
+    TopWidget getTopWidget();
+
+    const QObjectList& widgetStack() const;
+
+private:
+    TopWidget m_top_widget;
+
+
 signals:
+    void topWidgetChanged();
     void windowRectChanged(const QRect& rect);
     void fullScreenModeChanged(bool fullscreen);
 };

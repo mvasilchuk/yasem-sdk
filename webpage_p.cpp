@@ -5,7 +5,7 @@ using namespace yasem::SDK;
 
 WebPagePrivate::WebPagePrivate(WebPage* page):
     q_ptr(page),
-    m_id("-not-specified-")
+    m_id(-1)
 {
 
 }

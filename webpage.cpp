@@ -14,15 +14,16 @@ WebPage::WebPage():
 
 WebPage::~WebPage()
 {
-
+    delete d_ptr;
 }
 
-void WebPage::setId(const QString &id)
+
+void WebPage::setId(const int id)
 {
     d_ptr->m_id = id;
 }
 
-QString WebPage::getId() const
+int WebPage::getId() const
 {
     return d_ptr->m_id;
 }

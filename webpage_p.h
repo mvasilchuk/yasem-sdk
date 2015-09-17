@@ -17,7 +17,7 @@ public:
     virtual ~WebPagePrivate();
 
     WebPage *q_ptr; // q-ptr points to the API class
-    QString m_id;
+    int m_id;
 
 protected:
     WebPagePrivate(WebPage &p): q_ptr(&p) {}
