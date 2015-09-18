@@ -28,7 +28,8 @@ SOURCES += \
     datasourceclass.cpp \
     webpage.cpp \
     timeshift.cpp \
-    webpage_p.cpp
+    webpage_p.cpp \
+    utils.cpp
 
 HEADERS += \
     plugin.h \
@@ -58,7 +59,8 @@ HEADERS += \
     datasource.h \
     datasourceclass.h \
     timeshift.h \
-    webpage_p.h
+    webpage_p.h \
+    utils.h
 
 # Plugin headers
 

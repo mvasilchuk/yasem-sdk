@@ -7,7 +7,8 @@ using namespace SDK;
 
 Browser::Browser(Plugin *plugin):
     AbstractPluginObject(plugin),
-    m_last_page_id(-1)
+    m_last_page_id(0),
+    m_window_open_requested(false)
 {
 
 }
@@ -52,12 +53,22 @@ int Browser::nextPageId()
 
 void Browser::resetPageIds()
 {
-    m_last_page_id = -1;
+    m_last_page_id = 0;
 }
 
 int Browser::lastPageId() const
 {
     return m_last_page_id;
+}
+
+void Browser::setWindowOpenRequested(bool value)
+{
+    m_window_open_requested = value;
+}
+
+bool Browser::isWindowOpenRequested() const
+{
+    return m_window_open_requested;
 }
 
 void Browser::showDeveloperTools()

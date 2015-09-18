@@ -22,7 +22,7 @@ public slots:
     virtual ~WebPage();
 
     virtual bool load(const QUrl &url) = 0;
-    virtual bool openWindow(const QString &url, const QString &params, const QString &name) = 0;
+    virtual int openWindow(const QString &url, const QString &params, const QString &name) = 0;
     virtual void close() = 0;
     virtual void evalJs(const QString &js) = 0;
     virtual void setPageViewportSize(QSize new_size) = 0;

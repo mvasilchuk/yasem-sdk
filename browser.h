@@ -80,12 +80,16 @@ public:
     void resetPageIds();
     int lastPageId() const;
 
+    void setWindowOpenRequested(bool value);
+    bool isWindowOpenRequested() const;
+
 public slots:
     virtual void showDeveloperTools();
 
 protected:
     bool m_use_qml;
     int m_last_page_id;
+    bool m_window_open_requested;
 
 signals:
     void pageCountChanged();

@@ -3,6 +3,7 @@
 #include "browser.h"
 #include "webpage.h"
 #include "mediaplayer.h"
+#include "utils.h"
 
 #include <QMetaEnum>
 #include <QVariant>
@@ -72,19 +73,20 @@ GUI::TopWidget GUI::getTopWidget()
 const QObjectList &GUI::widgetStack() const
 {
     const QObjectList& list = Browser::instance()->getMainWebPage()->widget()->parentWidget()->children();
-    DEBUG() << "Current widget stack:";
+    PRINT_DATA_HEADER("Current widget stack:");
     for(QObject* object: list)
     {
         QWidget* widget = qobject_cast<QWidget*>(object);
         if(widget)
         {
             DEBUG() << qPrintable(
-                   QString("Child: %1 [visibility: %2]")
-                          .arg(widget->objectName())
-                          .arg(widget->isVisible() ? "visible" : "hidden")
-            );
+                           QString("    -> %1 [visibility: %2]")
+                              .arg(widget->objectName())
+                              .arg(widget->isVisible() ? "visible" : "hidden")
+                           );
         }
 
     }
+    PRINT_DATA_FOOTER;
     return list;
 }
