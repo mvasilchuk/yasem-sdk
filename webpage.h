@@ -12,13 +12,17 @@ class QWidget;
 namespace yasem {
 namespace SDK {
 
+class WebPagePrivate;
+
+
 class WebPage {
 public slots:
 
+    explicit WebPage();
     virtual ~WebPage();
 
     virtual bool load(const QUrl &url) = 0;
-    virtual bool openWindow(const QString &url, const QString &params, const QString &name) = 0;
+    virtual int openWindow(const QString &url, const QString &params, const QString &name) = 0;
     virtual void close() = 0;
     virtual void evalJs(const QString &js) = 0;
     virtual void setPageViewportSize(QSize new_size) = 0;
@@ -49,6 +53,16 @@ public slots:
     virtual void hide() = 0;
     virtual void raise() = 0;
     virtual void setStyleSheet(const QString& stylesheet) = 0;
+
+    virtual void setId(const int id);
+    virtual int getId() const;
+
+protected:
+private:
+    WebPage(WebPagePrivate &d): d_ptr(&d) {}
+    // allow subclasses to initialize with their own concrete Private
+    WebPagePrivate *d_ptr;
+
 };
 }
 

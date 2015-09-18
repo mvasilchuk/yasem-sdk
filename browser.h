@@ -15,6 +15,7 @@ class QUrl;
 class QResizeEvent;
 class QWidget;
 class QEvent;
+class QLayout;
 
 namespace yasem {
 namespace SDK {
@@ -29,11 +30,6 @@ public:
     Browser(Plugin* plugin);
     virtual ~Browser();
 
-    enum TopWidget {
-        TOP_WIDGET_BROWSER,
-        TOP_WIDGET_PLAYER
-    };
-
     enum SslStatus {
         SSL_UNDEFINED,
         PLAINTEXT,
@@ -45,7 +41,6 @@ public:
 
     virtual void setParentWidget(QWidget *parent) = 0;
     virtual QWidget* getParentWidget() = 0;
-    virtual QWidget* widget() = 0 ;
     virtual void resize(QResizeEvent* = 0) = 0;
     virtual void rect(const QRect &rect) = 0;
     virtual QRect rect() = 0;
@@ -53,12 +48,8 @@ public:
     virtual qreal scale() = 0;
     virtual void stb(SDK::StbPluginObject* stbPlugin) = 0;
     virtual SDK::StbPluginObject* stb() = 0;
-    virtual void show() = 0;
-    virtual void hide() = 0;
     virtual void fullscreen(bool setFullscreen) = 0;
     virtual bool fullscreen() = 0;
-
-    virtual QUrl url() const = 0;
 
     Q_DECL_DEPRECATED
     virtual QString browserRootDir() const = 0;
@@ -68,34 +59,40 @@ public:
     virtual void registerKeyEvent(GUI::RcKey rc_key, int keyCode, int which, bool alt = false, bool ctrl = false, bool shift = false) = 0;
     virtual void registerKeyEvent(GUI::RcKey rc_key, int keyCode, int which, int keyCode2, int which2, bool alt = false, bool ctrl = false, bool shift = false) = 0;
     virtual void clearKeyEvents() = 0;
-    virtual void passEvent(QEvent *event) = 0;
 
     virtual void setupMousePositionHandler(const QObject *receiver, const char* method) = 0;
 
-    virtual SDK::WebPage* getFirstPage() = 0;
-
     virtual QString getQmlComponentName();
 
-    virtual SDK::WebPage* createNewPage(bool child = false, bool visible = true) = 0;
-    virtual WebPage* getActiveWebPage() = 0;
+    virtual void setLayout(QLayout* layout) = 0;
+    virtual QLayout* layout() const = 0;
+    virtual SDK::WebPage* createNewPage(const int page_id = -1, bool visible = true) = 0;
+    virtual WebPage* getMainWebPage() const = 0;
 
     virtual void setUseQml(bool use);
     virtual bool isUsingQml() const;
 
-    virtual void setTopWidget(TopWidget top);
-    virtual TopWidget getTopWidget();
+    virtual QHash<int, WebPage*> pages() const  = 0;
+    virtual void addPage(WebPage* page) = 0;
+    virtual void removePage(WebPage* page) = 0;
+
+    int nextPageId();
+    void resetPageIds();
+    int lastPageId() const;
+
+    void setWindowOpenRequested(bool value);
+    bool isWindowOpenRequested() const;
 
 public slots:
     virtual void showDeveloperTools();
 
 protected:
-    QWidget* activeWebView;
     bool m_use_qml;
-    TopWidget m_top_widget;
+    int m_last_page_id;
+    bool m_window_open_requested;
 
 signals:
-    void topWidgetChanged();
-
+    void pageCountChanged();
     void page_loading_started(const QString& url);
     void connection_encrypted(const QString& url);
     void encryption_error(const QString& url, const QList<QSslError> &errors);

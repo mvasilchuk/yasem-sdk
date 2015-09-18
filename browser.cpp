@@ -6,7 +6,9 @@ using namespace SDK;
 
 
 Browser::Browser(Plugin *plugin):
-    AbstractPluginObject(plugin)
+    AbstractPluginObject(plugin),
+    m_last_page_id(0),
+    m_window_open_requested(false)
 {
 
 }
@@ -42,15 +44,31 @@ bool Browser::isUsingQml() const
     return m_use_qml;
 }
 
-void Browser::setTopWidget(Browser::TopWidget top)
+int Browser::nextPageId()
 {
-    m_top_widget = top;
-    emit topWidgetChanged();
+    m_last_page_id++;
+    DEBUG() << "New page ID:" << m_last_page_id;
+    return m_last_page_id;
 }
 
-Browser::TopWidget Browser::getTopWidget()
+void Browser::resetPageIds()
 {
-    return m_top_widget;
+    m_last_page_id = 0;
+}
+
+int Browser::lastPageId() const
+{
+    return m_last_page_id;
+}
+
+void Browser::setWindowOpenRequested(bool value)
+{
+    m_window_open_requested = value;
+}
+
+bool Browser::isWindowOpenRequested() const
+{
+    return m_window_open_requested;
 }
 
 void Browser::showDeveloperTools()
