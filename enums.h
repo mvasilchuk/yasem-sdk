@@ -104,16 +104,22 @@ public:*/
     };
 
 
-    enum CMD_ARGUMENTS {
-        COLOR_OUTPUT,
-        FULLSCREEN_APP,
-        DEVELOPER_TOOLS
+    enum CmdLineArgumants {
+        CMD_LINE_COLOR,
+        CMD_LINE_FULLSCREEN,
+        CMD_LINE_DEV_TOOLS,
+        CMD_LINE_VERBOSE,
+        CMD_LINE_LOG,
+        CMD_LINE_WINDOW_SIZE
     };
 
     static QString arguments[] = {
         "--color",
         "--fullscreen",
-        "--developer-tools"
+        "--developer-tools",
+        "--verbose",
+        "--log",
+        "--window-size"
     };
 
     enum MOUSE_POSITION {

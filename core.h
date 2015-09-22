@@ -72,8 +72,8 @@ public:
     virtual Config* yasem_settings() const = 0;
 
     virtual QList<StorageInfo*> storages() = 0;
-    virtual CoreNetwork* network() = 0;
-    virtual Statistics* statistics() = 0;
+    virtual CoreNetwork* network() const = 0;
+    virtual Statistics* statistics() const = 0;
     virtual VirtualMachine getVM() = 0;
 
     virtual QThread* mainThread() = 0;
@@ -97,17 +97,20 @@ public:
         #endif // Q_OS_UNIX
     }
 
-    virtual QString version() = 0;
-    virtual QString revision() = 0;
-    virtual QString compiler() = 0;
+    virtual QString version() const = 0;
+    virtual QString revision() const = 0;
+    virtual QString compiler() const = 0;
     QHash<QString, BlockDeviceInfo*> getBlockDeviceTree() {
         return block_device_tree;
     }
     virtual QString getConfigDir() const = 0;
+    virtual QHash<QString, QString> arguments() const = 0;
 
 protected:
     Core(QObject* parent): QObject(parent){}
     Core(Core const&);
+
+    virtual void parseCommandLineArgs() = 0;
 
     QHash<QString, GUI::RcKey> keycode_hashes;
     QHash<QString, BlockDeviceInfo*> block_device_tree;
