@@ -49,6 +49,12 @@ public:
         VM_VMWARE
     };
 
+    enum Feature {
+        FEATURE_OPENGL = 1
+    };
+
+    Q_DECLARE_FLAGS(Features, Feature)
+
     static Core* setInstance(Core* inst = 0)
     {
         static Core* instance = inst;
@@ -77,6 +83,7 @@ public:
     virtual VirtualMachine getVM() = 0;
 
     virtual QThread* mainThread() = 0;
+    virtual bool featureAvailable(const Feature feature) const = 0;
 
     static void printCallStack()
     {
@@ -125,6 +132,8 @@ public slots:
     virtual void onClose() = 0;
     virtual void mountPointChanged() = 0;
 };
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(Core::Features)
 
 }
 
