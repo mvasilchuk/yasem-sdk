@@ -157,6 +157,8 @@ public:
 
     virtual void resize();
 
+    virtual void setParentWidget(QWidget* parent) = 0;
+
     /*virtual void setUdpxyServer(const QString &server)
     {
         this->udpxyServer = server;
